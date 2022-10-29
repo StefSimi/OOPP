@@ -26,7 +26,7 @@ void Bullet::Update(TestEnemy* E[], int EnemySize) {
 
 	xpos += velx;
 	ypos += vely;
-
+	//testing123
 
 	/*Ricochet
 	if (xpos + srcRect.w > WIDTH || xpos < 0)
