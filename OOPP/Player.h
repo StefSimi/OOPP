@@ -8,7 +8,7 @@ class Player :public GameObject
 {
 public:
 	Player(const char* texturesheet, int x, int y,int HP,SDL_Renderer* rend);
-	virtual void Update();
+	virtual void Update(TestEnemy *E[], int EnemySize);
 	virtual void Render();
 	virtual SDL_Rect getBounds();
 	int getHP();

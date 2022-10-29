@@ -1,6 +1,8 @@
 #include "Player.h"
+#include "Bullet.h"
 
-
+Bullet* b;
+int testbullet = 0;
 Player::Player(const char* texturesheet, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,rend) {
 	this->HP = HP;
 
@@ -26,7 +28,7 @@ SDL_Rect Player::getBounds() {
 
 
 
-void Player::Update() {
+void Player::Update(TestEnemy* E[], int EnemySize) {
 	
 
 	if (Game::event.type == SDL_KEYDOWN) {
@@ -44,8 +46,33 @@ void Player::Update() {
 		case SDLK_d:
 			velx = 5;
 			break;
+		case SDLK_UP:
+			if (testbullet == 0) {
+				testbullet = 1;
+				b = new Bullet("assets/Bullet.png", xpos, ypos, 0+velx, -8+vely/2, renderer, 50);
+			}
+			break;
+		case SDLK_DOWN:
+			if (testbullet == 0) {
+				testbullet = 1;
+				b = new Bullet("assets/Bullet.png", xpos, ypos, 0+velx, 8+vely/2, renderer, 50);
+			}
+			break;
+		case SDLK_LEFT:
+			if (testbullet == 0) {
+				testbullet = 1;
+				b = new Bullet("assets/Bullet.png", xpos, ypos, -8+velx/2, 0+vely, renderer, 50);
+			}
+			break;
+		case SDLK_RIGHT:
+			if (testbullet == 0) {
+				testbullet = 1;
+				b = new Bullet("assets/Bullet.png", xpos, ypos, 8+velx/2, 0+vely, renderer, 50);
+			}
+			break;
 		default:
 			break;
+		
 		}
 	}
 	if (Game::event.type == SDL_KEYUP) {
@@ -89,12 +116,33 @@ void Player::Update() {
 	destRect.w = srcRect.w *4;
 	destRect.h = srcRect.h *4;
 
-	//collision(enemy, size);
 
-	std::cout << HP<<std::endl;
+	SDL_Rect A = getBounds();
+	for (int i = 0; i < EnemySize; i++) {
+		SDL_Rect B = E[i]->getBounds();
+		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y)
+			HP--;
+	}
+	if (HP <= 0) {
+		//delete E[2];
+		//size--;
+		HP = 100;
+	}
+
+	//collision(enemy, size);
+	if(testbullet)
+		if (b->getLifespan() >= 0)
+			b->Update(E,3);
+		
+	//std::cout << HP<<std::endl;
 
 }
 
 void Player::Render() {
+	if (testbullet)
+		if (b->getLifespan() >= 0)
+			b->Render();
+		else
+			testbullet = 0;
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
 }

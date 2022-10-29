@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
+#include "Handler.h"
 
 class Game
 {
@@ -25,6 +26,7 @@ public:
 	static SDL_Event event;
 	
 private:
+	//Handler handler;
 	bool isRunning = false;
 	float cnt = 0;
 	int testing = 1;

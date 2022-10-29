@@ -16,6 +16,10 @@ SDL_Rect TestEnemy::getBounds() {
 
 }
 
+TestEnemy::~TestEnemy() {
+	//delete this;
+}
+
 void TestEnemy::Update() {
 	srcRect.h = 128;
 	srcRect.w = 128;

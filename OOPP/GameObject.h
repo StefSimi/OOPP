@@ -23,10 +23,13 @@ class GameObject
 		const int Clamp(int value, int min, int max);
 
 
-		virtual void Update()=0;//???????????????????????? "virtual methods must either be implemented or defined as pure." ce inseamna asta
-		virtual void Render()=0;//Ah nvm are sens
-		//bool intersects (SDL_Rect a, SDL_Rect b)=0;
+		virtual void Update();//???????????????????????? "virtual methods must either be implemented or defined as pure." ce inseamna asta
+		virtual void Render();//Ah nvm are sens //ba nu
 		virtual SDL_Rect getBounds() = 0;
+
+
+
+		//bool intersects (SDL_Rect a, SDL_Rect b)=0;
 	
 	protected:
 		int xpos;

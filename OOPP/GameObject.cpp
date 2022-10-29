@@ -7,18 +7,21 @@ GameObject::GameObject() {
 	ypos = 0;
 }
 
-GameObject::GameObject(const char* texturesheet, int x, int y,int velx, int vely, SDL_Renderer* ren) {
+GameObject::GameObject(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* ren) {
 	renderer = ren;
-	objTexture = TextureManager::LoadTexture(texturesheet,ren);
+	objTexture = TextureManager::LoadTexture(texturesheet, ren);
 	xpos = x;
 	ypos = y;
 	this->velx = velx;
 	this->vely = vely;
 
 }
+GameObject::~GameObject() {
+	SDL_DestroyTexture(objTexture);
+}
 
-/*void GameObject::Update() {
-	
+void GameObject::Update() {
+	/*
 
 	srcRect.h = 32;
 	srcRect.w = 32;
@@ -80,14 +83,15 @@ GameObject::GameObject(const char* texturesheet, int x, int y,int velx, int vely
 	destRect.y = ypos;
 	destRect.w = srcRect.w * 6;
 	destRect.h = srcRect.h * 6;
-
-}*/
-
-/*void GameObject::Render() {
-	SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+	*/
+}
 
 
-}*/
+void GameObject::Render() {
+	//SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+
+
+}
 
 void GameObject::setX(int x) {
 	xpos = x;

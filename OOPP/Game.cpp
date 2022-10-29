@@ -4,10 +4,13 @@
 #include "Player.h"
 #include "map.h"
 #include "TestEnemy.h"
+#include "Bullet.h"
 
-
+int size = 3, bulletsize = 1;
 Player* player;
+//Handler* handler;
 TestEnemy* E[3];
+//Bullet* B[10];
 SDL_Event Game::event; //TODO Make variable private
 Map* map;
 //SDL_Renderer* Game::renderer=nullptr; //TODO Make variable private
@@ -17,6 +20,8 @@ Map* map;
 }
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
+	//Player player("assets/Sprite2.png", 0, 0, 100, renderer);
+	//handler = new Handler();
 	Game::renderer = nullptr;
 	int flags = 0;
 
@@ -37,10 +42,13 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 		isRunning = true;
 	}
 	//player = TextureManager::LoadTexture("assets/Sprite1.png", renderer);
+	//handler->addObject(new Player("assets/Sprite2.png", 0, 0, 100, renderer));
 	player = new Player("assets/Sprite2.png",0,0,100,renderer);
-	E[0] = new TestEnemy("assets/PC.png", 125, 25, 3, 3,renderer);
+	//handler->addObject(player);
+	E[0] = new TestEnemy("assets/PC.png", 125, 25, 3, 0,renderer);
 	E[1] = new TestEnemy("assets/Laptop.png", 530, 80, -2, 4,renderer);
 	E[2] = new TestEnemy("assets/Router.png", 121, 337, 5, -3,renderer);
+	//B[0] = new Bullet("assets/Bullet.png", 121, 337, 0, 2, renderer, 180);
 	map = new Map(renderer);
 }
 
@@ -91,20 +99,15 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	player->Update();
-	
-	//Should be in player class dar n-am object handler sadge
-	SDL_Rect A = player->getBounds();
-	for (int i = 0; i < 3; i++) {
-		SDL_Rect B = E[i]->getBounds();
-		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y)
-			player->setHP(player->getHP() - 1);
-	}
-	if (player->getHP() == 0)
-		clean();
-		
+	//handler->Update();
 
-	for (int i = 0; i < 3; i++)
+	player->Update(E,3);
+	//B[0]->Update();
+	
+	
+		
+	
+	for (int i = 0; i < size; i++)
 		E[i]->Update();
 }
 
@@ -114,7 +117,9 @@ void Game::render()
 	map->DrawMap(renderer);
 	//SDL_RenderCopy(renderer, playerTex, NULL, &destR);
 	player->Render();
-	for (int i = 0; i < 3; i++)
+	//handler->Render();
+	//B[0]->Render();
+	for (int i = 0; i < size; i++)
 		E[i]->Render();
 
 	SDL_RenderPresent(renderer);

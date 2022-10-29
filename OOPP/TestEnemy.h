@@ -9,6 +9,7 @@ class TestEnemy :public GameObject
 {
 public:
 	TestEnemy(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend);
+	~TestEnemy();
 	virtual void Update();
 	virtual void Render();
 	virtual SDL_Rect getBounds();
