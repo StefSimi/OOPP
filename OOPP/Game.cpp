@@ -45,7 +45,7 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 	//handler->addObject(new Player("assets/Sprite2.png", 0, 0, 100, renderer));
 	player = new Player("assets/Sprite2.png",0,0,100,renderer);
 	//handler->addObject(player);
-	E[0] = new TestEnemy("assets/PC.png", 125, 25, 3, 0,renderer);
+	E[0] = new TestEnemy("assets/PC.png", 125, 32, 3, 0,renderer);
 	E[1] = new TestEnemy("assets/Laptop.png", 530, 80, -2, 4,renderer);
 	E[2] = new TestEnemy("assets/Router.png", 121, 337, 5, -3,renderer);
 	//B[0] = new Bullet("assets/Bullet.png", 121, 337, 0, 2, renderer, 180);
@@ -103,7 +103,7 @@ void Game::update()
 
 	player->Update(E,3);
 	//B[0]->Update();
-	
+	//std::cout << player;
 	
 		
 	

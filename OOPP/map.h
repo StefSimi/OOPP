@@ -11,7 +11,8 @@ public:
 private:
 	SDL_Rect src, dest;
 	SDL_Texture* tile1;
-
+	SDL_Texture* tile2;
+	SDL_Texture* tile3;
 	int map[20][25];
 };
 

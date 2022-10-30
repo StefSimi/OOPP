@@ -13,6 +13,8 @@ public:
 	virtual SDL_Rect getBounds();
 	int getHP();
 	void setHP(int HP);
+
+	friend std::ostream& operator<<(std::ostream& os,  Player* p);
 private:
 	int HP;
 	//REMOVE

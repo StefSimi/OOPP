@@ -25,6 +25,14 @@ SDL_Rect Player::getBounds() {
 	return rect;
 
 }
+std::ostream& operator<<(std::ostream& os,   Player* p) {
+	if (!p->HP) {
+		os << "H(o)P(e) Missing";
+		return os;
+	}
+	os<<"HP= " <</*reinterpret_cast<int*>*/ p->HP<<"\n";
+	return os;
+}
 
 
 
@@ -120,12 +128,15 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 	SDL_Rect A = getBounds();
 	for (int i = 0; i < EnemySize; i++) {
 		SDL_Rect B = E[i]->getBounds();
-		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y)
+		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
 			HP--;
+			std::cout << this;
+		}
 	}
 	if (HP <= 0) {
 		//delete E[2];
 		//size--;
+		
 		HP = 100;
 	}
 
@@ -134,7 +145,7 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 		if (b->getLifespan() >= 0)
 			b->Update(E,3);
 		
-	//std::cout << HP<<std::endl;
+	
 
 }
 
