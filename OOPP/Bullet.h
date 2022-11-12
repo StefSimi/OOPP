@@ -12,7 +12,7 @@ class Bullet : public GameObject
 	public:
 	Bullet(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend, int lifespan);
 	~Bullet();
-	virtual void Update(TestEnemy* E[], int EnemySize);
+	virtual void Update(std::vector<GameObject*> &E);
 	virtual void Render();
 	virtual SDL_Rect getBounds();
 	int getLifespan();

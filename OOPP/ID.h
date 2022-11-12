@@ -2,5 +2,7 @@
 
 enum ID {
 	Player1,
-	Enemy
+	Enemy,
+	PlayerBullet
+
 };

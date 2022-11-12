@@ -8,18 +8,17 @@ class Player :public GameObject
 {
 public:
 	Player(const char* texturesheet, int x, int y,int HP,SDL_Renderer* rend);
-	virtual void Update(TestEnemy *E[], int EnemySize);
+	virtual void Update(std::vector<GameObject*> &E,bool &running);
 	virtual void Render();
 	virtual SDL_Rect getBounds();
-	int getHP();
-	void setHP(int HP);
-
+	/*int getHP();
+	void setHP(int HP);*/
+	void setKeyDown(int index, bool value);
+	bool getKeyDown(int index);
 	friend std::ostream& operator<<(std::ostream& os,  Player* p);
 private:
-	int HP;
-	//REMOVE
-	//TestEnemy* enemy[3];
-	//int size;
+	bool keyDown[4] = {0};
+	int hitDelay=0;
 };
 
 

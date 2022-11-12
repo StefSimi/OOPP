@@ -1,16 +1,18 @@
 #pragma once
-#include "list"
+#include <vector>
 #include "GameObject.h"
 /*
 class Handler
 {
-	std::list <Player> object;
+	std::vector <GameObject*> Enemies;
+	std::vector <GameObject*> FriendlyBullets;
 	public:
 		Handler();
 		void Update();
 		void Render();
-		void addObject(Player object);
-		void removeObject(Player object);
+		void addObject(ID id,void* object);//using void * ????
+		void removeObject(ID id,void* object);
 
 };
+
 */

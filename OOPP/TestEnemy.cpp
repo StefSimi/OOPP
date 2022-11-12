@@ -1,7 +1,7 @@
 #include "TestEnemy.h"
 
-TestEnemy::TestEnemy(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,rend) {
-
+TestEnemy::TestEnemy(const char* texturesheet, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
+	this->HP = HP;
 
 }
 
@@ -20,6 +20,14 @@ TestEnemy::~TestEnemy() {
 	//delete this;
 }
 
+/*void TestEnemy::setHP(int HP) {
+	this->HP = HP;
+}
+
+int TestEnemy::getHP() {
+	return HP;
+}*/
+
 void TestEnemy::Update() {
 	srcRect.h = 128;
 	srcRect.w = 128;
@@ -29,9 +37,9 @@ void TestEnemy::Update() {
 	xpos += velx;
 	ypos += vely;
 
-	if (xpos + srcRect.w / 2 > WIDTH || xpos < 0)
+	if (xpos + srcRect.w / 2 > WIDTH-32 || xpos < 32)
 		velx *= -1;
-	if (ypos + srcRect.h / 2 > HEIGHT || ypos < 0)
+	if (ypos + srcRect.h / 2 > HEIGHT-32 || ypos < 32)
 		vely *= -1;
 
 

@@ -6,7 +6,7 @@ class GameObject
 {
 	public:
 		GameObject();
-		GameObject(const char* texturesheet, int x, int y,int velx, int vely,SDL_Renderer* rend);
+		GameObject(const char* texturesheet, int x, int y,int velx, int vely,int HP,SDL_Renderer* rend);
 		~GameObject();
 
 		void setX(int x);
@@ -14,12 +14,14 @@ class GameObject
 		void setID(ID id);
 		void setVelX(int velx);
 		void setVelY(int vely);
+		void setHP(int HP);
 
 		int getX();
 		int getY();
 		ID getID();
 		int getVelX();
 		int getVelY();
+		int getHP();
 		const int Clamp(int value, int min, int max);
 
 
@@ -36,6 +38,7 @@ class GameObject
 		int ypos;
 		ID id;
 		int velx=0, vely=0;
+		int HP;
 
 	//private:
 

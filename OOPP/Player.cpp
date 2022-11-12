@@ -3,11 +3,11 @@
 
 Bullet* b;
 int testbullet = 0;
-Player::Player(const char* texturesheet, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,rend) {
+Player::Player(const char* texturesheet, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }
-
+/*
 void Player::setHP(int HP) {
 	this->HP = HP;
 }
@@ -15,7 +15,7 @@ void Player::setHP(int HP) {
 int Player::getHP(){
 	return HP;
 }
-
+*/
 SDL_Rect Player::getBounds() {
 	SDL_Rect rect;
 	rect.x = xpos;
@@ -26,17 +26,25 @@ SDL_Rect Player::getBounds() {
 
 }
 std::ostream& operator<<(std::ostream& os,   Player* p) {
-	if (!p->HP) {
-		os << "H(o)P(e) Missing";
+	if (p->HP<0) {
+		os << "You died.\n";
 		return os;
 	}
 	os<<"HP= " <</*reinterpret_cast<int*>*/ p->HP<<"\n";
 	return os;
 }
 
+void Player::setKeyDown(int index, bool value) {
+	keyDown[index] = value;
+}
+bool Player::getKeyDown(int index) {
+	return keyDown[index];
+}
 
 
-void Player::Update(TestEnemy* E[], int EnemySize) {
+
+void Player::Update(std::vector<GameObject*>&E, bool &running ) {
+	hitDelay = Clamp(hitDelay-1, 0, 60);
 	
 
 	if (Game::event.type == SDL_KEYDOWN) {
@@ -44,20 +52,25 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 		{
 		case SDLK_w:
 			vely = -5;
+			keyDown[0] = true;
 			break;
 		case SDLK_s:
 			vely = 5;
+			keyDown[1] = true;
 			break;
 		case SDLK_a:
 			velx = -5;
+			keyDown[2] = true;
 			break;
 		case SDLK_d:
 			velx = 5;
+			keyDown[3] = true;
 			break;
 		case SDLK_UP:
 			if (testbullet == 0) {
 				testbullet = 1;
 				b = new Bullet("assets/Bullet.png", xpos, ypos, 0+velx, -8+vely/2, renderer, 50);
+				//E.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, -8 + vely / 2, renderer, 50));
 			}
 			break;
 		case SDLK_DOWN:
@@ -87,20 +100,28 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 		switch (Game::event.key.keysym.sym)
 		{
 		case SDLK_w:
-			vely = 0;
+			//vely = 0;
+			keyDown[0] = false;
 			break;
 		case SDLK_s:
-			vely = 0;
+			//vely = 0;
+			keyDown[1] = false;
 			break;
 		case SDLK_a:
-			velx = 0;
+			//velx = 0;
+			keyDown[2] = false;
 			break;
 		case SDLK_d:
-			velx = 0;
+			//velx = 0;
+			keyDown[3] = false;
 			break;
 		default:
 			break;
 		}
+		if (!keyDown[0] && !keyDown[1])
+			vely = 0;
+		if (!keyDown[2] && !keyDown[3])
+			velx = 0;
 	}
 	if (velx < 0)
 		srcRect.x = 13;
@@ -115,8 +136,8 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 	srcRect.y = 0;
 
 	
-	xpos=Clamp(xpos+velx, 0, WIDTH - destRect.w);
-	ypos=Clamp(ypos+vely, 0, HEIGHT - destRect.h);
+	xpos=Clamp(xpos+velx, 32, WIDTH - destRect.w-32);
+	ypos=Clamp(ypos+vely, 32, HEIGHT - destRect.h-32);
 
 
 	destRect.x = xpos;
@@ -126,24 +147,31 @@ void Player::Update(TestEnemy* E[], int EnemySize) {
 
 
 	SDL_Rect A = getBounds();
-	for (int i = 0; i < EnemySize; i++) {
+	for (int i = 0; i < E.size(); i++) {
 		SDL_Rect B = E[i]->getBounds();
-		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
-			HP--;
+		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y&&hitDelay==0) {
+			HP --;
+			hitDelay = 60;
+
 			std::cout << this;
 		}
 	}
-	if (HP <= 0) {
+	//FOR DEBUGGING
+	if (HP < 0) {
+		running = false;
+	}
+
+	/*if (HP <= 0) { 
 		//delete E[2];
 		//size--;
 		
 		HP = 100;
-	}
+	}*/
 
 	//collision(enemy, size);
 	if(testbullet)
 		if (b->getLifespan() >= 0)
-			b->Update(E,3);
+			b->Update(E);
 		
 	
 

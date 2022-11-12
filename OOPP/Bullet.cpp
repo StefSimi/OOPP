@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend, int lifespan) : GameObject(texturesheet, x, y, velx, vely,rend) {
+Bullet::Bullet(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend, int lifespan) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
 	this->lifespan = lifespan;
 }
 Bullet::~Bullet(){
@@ -15,7 +15,7 @@ SDL_Rect Bullet::getBounds() {
 	rect.h = 32;
 	return rect;
 }
-void Bullet::Update(TestEnemy* E[], int EnemySize) {
+void Bullet::Update(std::vector<GameObject*> &E ) {
 	//std::cout << "debug";
 	
 	
@@ -42,10 +42,18 @@ void Bullet::Update(TestEnemy* E[], int EnemySize) {
 	destRect.h = srcRect.h;
 
 	SDL_Rect A = getBounds();
-	for (int i = 0; i < EnemySize; i++) {
+	for (int i = 0; i < E.size(); i++) {
 		SDL_Rect B = E[i]->getBounds();
 		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
-			std::cout << "Hit Enemy " << i << std::endl;
+			E[i]->setHP(E[i]->getHP() - 20); 
+			if (E[i]->getHP() <= 0) {
+				std::cout << "Killed Enemy " << i << std::endl;
+				E.erase(E.begin() + i);
+				if (E.size() == 0)
+					std::cout << "Room Clear\n";
+			}
+			else
+				std::cout << "Hit Enemy " << i << std::endl;
 			lifespan = 1;
 		}
 	}
