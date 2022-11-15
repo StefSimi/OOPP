@@ -15,6 +15,7 @@ Player* player;
 
 //TestEnemy* E[3];
 std::vector <GameObject*>E;
+std::vector <Bullet*>B;
 
 //Bullet* B[10];
 SDL_Event Game::event; //TODO Make variable private
@@ -110,7 +111,7 @@ void Game::handleEvents()
 void Game::update()
 {
 
-	player->Update(E,isRunning);
+	player->Update(E,B,isRunning);
 	
 	for (int i = 0; i < E.size(); i++)
 		E[i]->Update();
@@ -120,7 +121,7 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	map->DrawMap(renderer);
-	player->Render();
+	player->Render(E,B);
 	for (int i = 0; i < E.size(); i++)
 		E[i]->Render();
 

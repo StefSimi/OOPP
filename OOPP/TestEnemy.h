@@ -12,6 +12,7 @@ public:
 	~TestEnemy();
 	virtual void Update();
 	virtual void Render();
+	virtual void OnHit();
 	virtual SDL_Rect getBounds();
 	/*void setHP(int HP);
 	int getHP();*/

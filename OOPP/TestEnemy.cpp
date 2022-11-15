@@ -17,7 +17,8 @@ SDL_Rect TestEnemy::getBounds() {
 }
 
 TestEnemy::~TestEnemy() {
-	//delete this;
+	//free texture
+	delete this;
 }
 
 /*void TestEnemy::setHP(int HP) {
@@ -52,4 +53,7 @@ void TestEnemy::Update() {
 }
 void TestEnemy::Render() {
 	SDL_RenderCopy(renderer,objTexture, &srcRect, &destRect);
+}
+void TestEnemy::OnHit() {
+	
 }

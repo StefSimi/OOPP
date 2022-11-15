@@ -43,52 +43,51 @@ bool Player::getKeyDown(int index) {
 
 
 
-void Player::Update(std::vector<GameObject*>&E, bool &running ) {
-	hitDelay = Clamp(hitDelay-1, 0, 60);
-	
+void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bullets, bool &running ) {
+	currenthitDelay = Clamp(currenthitDelay-1, 0, 60);
+	currentbulletDelay = Clamp(currentbulletDelay - 1, 0, 100);
 
 	if (Game::event.type == SDL_KEYDOWN) {
 		switch (Game::event.key.keysym.sym)
 		{
 		case SDLK_w:
-			vely = -5;
+			vely = -speed;
 			keyDown[0] = true;
 			break;
 		case SDLK_s:
-			vely = 5;
+			vely = speed;
 			keyDown[1] = true;
 			break;
 		case SDLK_a:
-			velx = -5;
+			velx = -speed;
 			keyDown[2] = true;
 			break;
 		case SDLK_d:
-			velx = 5;
+			velx = speed;
 			keyDown[3] = true;
 			break;
 		case SDLK_UP:
-			if (testbullet == 0) {
-				testbullet = 1;
-				b = new Bullet("assets/Bullet.png", xpos, ypos, 0+velx, -8+vely/2, renderer, 50);
-				//E.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, -8 + vely / 2, renderer, 50));
+			if (currentbulletDelay == 0) {
+				currentbulletDelay = bulletDelay;
+				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, -speed-3 + vely / 2,bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_DOWN:
-			if (testbullet == 0) {
-				testbullet = 1;
-				b = new Bullet("assets/Bullet.png", xpos, ypos, 0+velx, 8+vely/2, renderer, 50);
+			if (currentbulletDelay == 0) {
+				currentbulletDelay = bulletDelay;
+				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, speed+3 + vely / 2, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_LEFT:
-			if (testbullet == 0) {
-				testbullet = 1;
-				b = new Bullet("assets/Bullet.png", xpos, ypos, -8+velx/2, 0+vely, renderer, 50);
+			if (currentbulletDelay == 0) {
+				currentbulletDelay = bulletDelay;;
+				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, -speed-3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_RIGHT:
-			if (testbullet == 0) {
-				testbullet = 1;
-				b = new Bullet("assets/Bullet.png", xpos, ypos, 8+velx/2, 0+vely, renderer, 50);
+			if (currentbulletDelay == 0) {
+				currentbulletDelay = bulletDelay;
+				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, speed+3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		default:
@@ -147,41 +146,65 @@ void Player::Update(std::vector<GameObject*>&E, bool &running ) {
 
 
 	SDL_Rect A = getBounds();
-	for (int i = 0; i < E.size(); i++) {
-		SDL_Rect B = E[i]->getBounds();
-		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y&&hitDelay==0) {
+	for (int i = 0; i < Enemies.size(); i++) {
+		SDL_Rect B = Enemies[i]->getBounds();
+		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y&&currenthitDelay==0) {
 			HP --;
-			hitDelay = 60;
+			currenthitDelay = hitDelay;
 
 			std::cout << this;
 		}
 	}
-	//FOR DEBUGGING
+
+	//COMMENT IF DEBUGGING
 	if (HP < 0) {
 		running = false;
 	}
 
-	/*if (HP <= 0) { 
-		//delete E[2];
-		//size--;
-		
-		HP = 100;
-	}*/
-
-	//collision(enemy, size);
-	if(testbullet)
-		if (b->getLifespan() >= 0)
-			b->Update(E);
-		
 	
 
+
+	for (int bull = 0; bull < Bullets.size(); bull++) {//DO NOT TOUCH CURSED AF
+		bool del = false;
+		//std::cout << Bullets.size()<<std::endl;
+
+		if (Bullets[bull]->getHP() > 0) {
+			Bullets[bull]->Update(Enemies, del);
+			if (del == true) {
+				Bullets.erase(Bullets.begin() + bull);
+				bull--;//Maybe
+				Bullets.shrink_to_fit();
+				delete Bullets[bull];
+			}
+
+		}
+		else {
+			Bullets.erase(Bullets.begin() + bull);
+		}
+
+	}
+
+	
 }
 
-void Player::Render() {
+void Player::Render(std::vector<GameObject*>& Enemies,std::vector<Bullet*>& Bullets) {
+	for (int bull = 0; bull < Bullets.size(); bull++) {
+		if(Bullets[bull]->getHP()>=0)
+			Bullets[bull]->Render();
+
+	}
+
+	/*
 	if (testbullet)
-		if (b->getLifespan() >= 0)
+		if (b->getHP() >= 0)
 			b->Render();
 		else
 			testbullet = 0;
+	*/
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
+	
+}
+
+void Player::OnHit() {
+
 }

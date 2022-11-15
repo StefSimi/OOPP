@@ -27,6 +27,7 @@ class GameObject
 
 		virtual void Update();//???????????????????????? "virtual methods must either be implemented or defined as pure." ce inseamna asta
 		virtual void Render();//Ah nvm are sens //ba nu
+		virtual void OnHit()=0;
 		virtual SDL_Rect getBounds() = 0;
 
 

@@ -1,11 +1,12 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(const char* texturesheet, int x, int y, int velx, int vely, SDL_Renderer* rend, int lifespan) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
-	this->lifespan = lifespan;
+Bullet::Bullet(const char* texturesheet, int x, int y, int velx, int vely, int bulletDamage, int bulletRange, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
+	HP = bulletRange;
+	damage = bulletDamage;
 }
 Bullet::~Bullet(){
-	
+	SDL_DestroyTexture(objTexture);
 }
 SDL_Rect Bullet::getBounds() {
 	SDL_Rect rect;
@@ -15,7 +16,7 @@ SDL_Rect Bullet::getBounds() {
 	rect.h = 32;
 	return rect;
 }
-void Bullet::Update(std::vector<GameObject*> &E ) {
+void Bullet::Update(std::vector<GameObject*> &E, bool Del ) {
 	//std::cout << "debug";
 	
 	
@@ -26,8 +27,7 @@ void Bullet::Update(std::vector<GameObject*> &E ) {
 
 	xpos += velx;
 	ypos += vely;
-	//testing123
-
+	
 	/*Ricochet
 	if (xpos + srcRect.w > WIDTH || xpos < 0)
 		velx *= -1;
@@ -45,22 +45,28 @@ void Bullet::Update(std::vector<GameObject*> &E ) {
 	for (int i = 0; i < E.size(); i++) {
 		SDL_Rect B = E[i]->getBounds();
 		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
-			E[i]->setHP(E[i]->getHP() - 20); 
+			
+			E[i]->setHP(E[i]->getHP() - damage); 
 			if (E[i]->getHP() <= 0) {
 				std::cout << "Killed Enemy " << i << std::endl;
 				E.erase(E.begin() + i);
 				if (E.size() == 0)
 					std::cout << "Room Clear\n";
 			}
-			else
+			else {
 				std::cout << "Hit Enemy " << i << std::endl;
-			lifespan = 1;
+				E[i]->OnHit(); //For sound effects and particles
+			}
+
+			HP = 1;
 		}
 	}
 
-	lifespan--;
-	if (lifespan <= 0)
-		delete this;
+	HP--;
+	if (HP <= 0) {
+		Del = true;
+		//delete this;
+	}
 	
 
 }
@@ -68,13 +74,7 @@ void Bullet::Render() {
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
 }
 
+void Bullet::OnHit() {
 
-int Bullet::getLifespan()
-{
-	return lifespan;
 }
 
-void Bullet::setLifespan(int x)
-{
-	lifespan = x;
-}
