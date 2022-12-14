@@ -160,7 +160,7 @@ void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bull
 	}
 
 	//COMMENT IF DEBUGGING
-	//if (HP < 0) { running = false; }
+	if (HP < 0) { running = false; }
 		
 	
 

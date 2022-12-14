@@ -8,7 +8,9 @@
 
 
 int counter = 0;
+int CurrentEnemies=0;
 int size = 3, bulletsize = 1;
+bool spamfilter = 0;
 Player* player;
 //Handler* handler;
 
@@ -112,13 +114,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	counter++;
+	CurrentEnemies = 0;
+	/*counter++;
 	if (counter % 60 == 0) {
 		for (int i = 0; i < E.size(); i++) {
 			std::cout << i << " " << E[i]->getID() << std::endl;
 		}
 		counter = 1;
-	}
+	}*/
 
 	//player->Update(E,B,isRunning);
 	
@@ -131,6 +134,7 @@ void Game::update()
 			break;
 
 		case Enemy:
+			CurrentEnemies++;
 			E[i]->Update();
 			break;
 		case PlayerBullet:
@@ -139,6 +143,10 @@ void Game::update()
 			break;
 
 		}
+	if (CurrentEnemies == 0 && spamfilter == false) {
+		spamfilter = true;
+		std::cout << "Room Clear" << std::endl;
+	}
 }
 
 void Game::render()
@@ -147,19 +155,7 @@ void Game::render()
 	map->DrawMap(renderer);
 	//player->Render(E,B);
 	for (int i = 0; i < E.size(); i++)
-		switch (E[i]->getID()) {
-		case Player1: {
-			Player* p = reinterpret_cast<Player*>(E[i]);
-			p->Render();
-			}break;
-		case Enemy:
-			E[i]->Render();
-			break;
-		case PlayerBullet:
-			
-			E[i]->Render();
-			break;
-		}
+		E[i]->Render();
 
 
 	SDL_RenderPresent(renderer);

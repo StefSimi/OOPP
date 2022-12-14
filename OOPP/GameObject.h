@@ -26,7 +26,7 @@ class GameObject
 
 
 		virtual void Update();
-		virtual void Render();
+		virtual void Render()=0;
 		virtual void OnHit()=0;
 		virtual SDL_Rect getBounds() = 0;
 

@@ -53,15 +53,13 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 					if (E[i]->getHP() <= 0) {
 						std::cout << "Killed Enemy " << i << std::endl;
 						E.erase(E.begin() + i);
-						std::cout << "Test";
-						delete E[i];
-						//E.shrink_to_fit();
-						i--;
+						//std::cout << "Test";
+						//delete E[i];
+						E.shrink_to_fit();
+						//i--;
 						index--;
-						if (E.size() == 0)
-							std::cout << "Room Clear\n";
 						HP = 1;
-						//break;
+						break;
 					}
 					else {
 						std::cout << "Hit Enemy " << i << std::endl;

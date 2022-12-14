@@ -24,7 +24,7 @@ private:
 	/// HP=HP from constructor
 	int speed = 5;
 	int hitDelay = 60;
-	int bulletDelay = 5;
+	int bulletDelay = 20;
 	int bulletDamage = 5;
 	int bulletRange = 50;
 

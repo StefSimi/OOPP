@@ -1,16 +1,2 @@
-﻿  Bullet.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Bullet.cpp(47,21): warning C4018: '<': signed/unsigned mismatch
-  Game.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Game.cpp(117,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Stefan\Desktop\OOPP\OOPP\Game.cpp(125,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Stefan\Desktop\OOPP\OOPP\Game.cpp(149,20): warning C4018: '<': signed/unsigned mismatch
-  GameObject.cpp
-  Handler.cpp
-  Player.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(150,20): warning C4018: '<': signed/unsigned mismatch
-  TestEnemy.cpp
-  TextureManager.cpp
-  main.cpp
-  map.cpp
-  Generating Code...
+﻿  map.cpp
   OOPP.vcxproj -> C:\Users\Stefan\Desktop\OOPP\Debug\OOPP.exe
