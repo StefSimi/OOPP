@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Handler.h"
 #include <vector>
+#include <list>
 
 class Game
 {

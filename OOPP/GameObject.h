@@ -6,7 +6,7 @@ class GameObject
 {
 	public:
 		GameObject();
-		GameObject(const char* texturesheet, int x, int y,int velx, int vely,int HP,SDL_Renderer* rend);
+		GameObject(const char* texturesheet,ID id, int x, int y,int velx, int vely,int HP,SDL_Renderer* rend);
 		~GameObject();
 
 		void setX(int x);
@@ -25,8 +25,8 @@ class GameObject
 		const int Clamp(int value, int min, int max);
 
 
-		virtual void Update();//???????????????????????? "virtual methods must either be implemented or defined as pure." ce inseamna asta
-		virtual void Render();//Ah nvm are sens //ba nu
+		virtual void Update();
+		virtual void Render();
 		virtual void OnHit()=0;
 		virtual SDL_Rect getBounds() = 0;
 

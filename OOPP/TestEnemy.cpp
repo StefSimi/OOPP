@@ -1,6 +1,6 @@
 #include "TestEnemy.h"
 
-TestEnemy::TestEnemy(const char* texturesheet, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
+TestEnemy::TestEnemy(const char* texturesheet,ID id, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }

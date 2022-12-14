@@ -8,7 +8,7 @@
 class TestEnemy :public GameObject
 {
 public:
-	TestEnemy(const char* texturesheet, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend);
+	TestEnemy(const char* texturesheet,ID id, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend);
 	~TestEnemy();
 	virtual void Update();
 	virtual void Render();

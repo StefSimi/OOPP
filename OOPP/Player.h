@@ -8,9 +8,9 @@
 class Player :public GameObject
 {
 public:
-	Player(const char* texturesheet, int x, int y,int HP,SDL_Renderer* rend);
+	Player(const char* texturesheet,ID id, int x, int y,int HP,SDL_Renderer* rend);
 	virtual void Update(std::vector<GameObject*> &Enemies,std::vector<Bullet*>& Bullets, bool &running);
-	virtual void Render(std::vector<GameObject*>& Enemies,std::vector<Bullet*>& Bullets);
+	virtual void Render();
 	virtual void OnHit();
 	virtual SDL_Rect getBounds();
 	/*int getHP();
@@ -24,7 +24,7 @@ private:
 	/// HP=HP from constructor
 	int speed = 5;
 	int hitDelay = 60;
-	int bulletDelay = 20;
+	int bulletDelay = 5;
 	int bulletDamage = 5;
 	int bulletRange = 50;
 

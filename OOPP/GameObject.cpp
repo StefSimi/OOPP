@@ -7,7 +7,7 @@ GameObject::GameObject() {
 	ypos = 0;
 }
 
-GameObject::GameObject(const char* texturesheet, int x, int y, int velx, int vely,int HP, SDL_Renderer* ren) {
+GameObject::GameObject(const char* texturesheet,ID id, int x, int y, int velx, int vely,int HP, SDL_Renderer* ren) {
 	renderer = ren;
 	objTexture = TextureManager::LoadTexture(texturesheet, ren);
 	xpos = x;
@@ -15,6 +15,7 @@ GameObject::GameObject(const char* texturesheet, int x, int y, int velx, int vel
 	this->velx = velx;
 	this->vely = vely;
 	this->HP = HP;
+	this->id = id;
 
 }
 GameObject::~GameObject() {

@@ -1,9 +1,9 @@
 #include "Player.h"
 #include "Bullet.h"
 
-Bullet* b;
-int testbullet = 0;
-Player::Player(const char* texturesheet, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet, x, y, velx, vely,HP,rend) {
+//Bullet* b;
+//int testbullet = 0;
+Player::Player(const char* texturesheet,ID id, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }
@@ -42,8 +42,9 @@ bool Player::getKeyDown(int index) {
 }
 
 
-
 void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bullets, bool &running ) {
+	
+
 	currenthitDelay = Clamp(currenthitDelay-1, 0, 60);
 	currentbulletDelay = Clamp(currentbulletDelay - 1, 0, 100);
 
@@ -69,25 +70,25 @@ void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bull
 		case SDLK_UP:
 			if (currentbulletDelay == 0) {
 				currentbulletDelay = bulletDelay;
-				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, -speed-3 + vely / 2,bulletDamage, bulletRange, renderer));
+				Enemies.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, 0 + velx, -speed-3 + vely / 2,bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_DOWN:
 			if (currentbulletDelay == 0) {
 				currentbulletDelay = bulletDelay;
-				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, 0 + velx, speed+3 + vely / 2, bulletDamage, bulletRange, renderer));
+				Enemies.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, 0 + velx, speed+3 + vely / 2, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_LEFT:
 			if (currentbulletDelay == 0) {
 				currentbulletDelay = bulletDelay;;
-				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, -speed-3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
+				Enemies.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, -speed-3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		case SDLK_RIGHT:
 			if (currentbulletDelay == 0) {
 				currentbulletDelay = bulletDelay;
-				Bullets.push_back(new Bullet("assets/Bullet.png", xpos, ypos, speed+3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
+				Enemies.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, speed+3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
 			}
 			break;
 		default:
@@ -147,24 +148,26 @@ void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bull
 
 	SDL_Rect A = getBounds();
 	for (int i = 0; i < Enemies.size(); i++) {
-		SDL_Rect B = Enemies[i]->getBounds();
-		if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y&&currenthitDelay==0) {
-			HP --;
-			currenthitDelay = hitDelay;
+		if (Enemies[i]->getID() == Enemy) {
+			SDL_Rect B = Enemies[i]->getBounds();
+			if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y && currenthitDelay == 0) {
+				HP--;
+				currenthitDelay = hitDelay;
 
-			std::cout << this;
+				std::cout << this;
+			}
 		}
 	}
 
 	//COMMENT IF DEBUGGING
-	if (HP < 0) {
-		running = false;
-	}
+	//if (HP < 0) { running = false; }
+		
+	
 
 	
 
 
-	for (int bull = 0; bull < Bullets.size(); bull++) {//DO NOT TOUCH CURSED AF
+	/*for (int bull = 0; bull < Bullets.size(); bull++) {//DO NOT TOUCH CURSED AF
 		bool del = false;
 		//std::cout << Bullets.size()<<std::endl;
 
@@ -182,17 +185,17 @@ void Player::Update(std::vector<GameObject*>&Enemies, std::vector<Bullet*>& Bull
 			Bullets.erase(Bullets.begin() + bull);
 		}
 
-	}
+	}*/
 
 	
 }
 
-void Player::Render(std::vector<GameObject*>& Enemies,std::vector<Bullet*>& Bullets) {
-	for (int bull = 0; bull < Bullets.size(); bull++) {
+void Player::Render() {
+	/*for (int bull = 0; bull < Bullets.size(); bull++) {
 		if(Bullets[bull]->getHP()>=0)
 			Bullets[bull]->Render();
 
-	}
+	}*/
 
 	/*
 	if (testbullet)
