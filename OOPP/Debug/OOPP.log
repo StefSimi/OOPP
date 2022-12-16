@@ -1,2 +1,4 @@
-﻿  map.cpp
+﻿  Player.cpp
+C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(119,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(138,13): warning C4101: 'pos': unreferenced local variable
   OOPP.vcxproj -> C:\Users\Stefan\Desktop\OOPP\Debug\OOPP.exe

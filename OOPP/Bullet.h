@@ -10,7 +10,7 @@ class Bullet : public GameObject
 	public:
 	Bullet(const char* texturesheet,ID id, int x, int y, int velx, int vely,int bulletDamage, int bulletRange, SDL_Renderer* rend);
 	~Bullet();
-	virtual void Update(std::vector<GameObject*> &E,int &index);
+	virtual void Update(std::vector<GameObject*> &Entities,int &index);
 	virtual void Render();
 	virtual void OnHit();
 	virtual SDL_Rect getBounds();

@@ -16,12 +16,11 @@ SDL_Rect Bullet::getBounds() {
 	rect.h = 32;
 	return rect;
 }
-void Bullet::Update(std::vector<GameObject*>& E, int &index) {
+void Bullet::Update(std::vector<GameObject*>& Entities, int &index) {
 	bool del = false;
 	if (HP > 0) {
-		//std::cout << "debug";
 
-
+		/*
 		srcRect.h = 32;
 		srcRect.w = 32;
 		srcRect.x = 0;
@@ -29,33 +28,36 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 
 		xpos += velx;
 		ypos += vely;
-
-		/*Ricochet
+		/*
+		//Ricochet
 		if (xpos + srcRect.w > WIDTH || xpos < 0)
 			velx *= -1;
 		if (ypos + srcRect.h > HEIGHT || ypos < 0)
 			vely *= -1;
 
 		*/
-
+		/*
 		destRect.x = xpos;
 		destRect.y = ypos;
 		destRect.w = srcRect.w;
-		destRect.h = srcRect.h;
+		destRect.h = srcRect.h;*/
+
+		xpos += velx;
+		ypos += vely;
 
 		SDL_Rect A = getBounds();
-		for (int i = 0; i < E.size(); i++) {
-			if (E[i]->getID() == Enemy) {
-				SDL_Rect B = E[i]->getBounds();
+		for (int i = 0; i < Entities.size(); i++) {
+			if (Entities[i]->getID() == Enemy) {
+				SDL_Rect B = Entities[i]->getBounds();
 				if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
 
-					E[i]->setHP(E[i]->getHP() - damage);
-					if (E[i]->getHP() <= 0) {
+					Entities[i]->setHP(Entities[i]->getHP() - damage);
+					if (Entities[i]->getHP() <= 0) {
 						std::cout << "Killed Enemy " << i << std::endl;
-						E.erase(E.begin() + i);
+						Entities.erase(Entities.begin() + i);
 						//std::cout << "Test";
 						//delete E[i];
-						E.shrink_to_fit();
+						Entities.shrink_to_fit();
 						//i--;
 						index--;
 						HP = 1;
@@ -63,7 +65,7 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 					}
 					else {
 						std::cout << "Hit Enemy " << i << std::endl;
-						E[i]->OnHit(); //For sound effects and particles
+						Entities[i]->OnHit(); //For sound effects and particles
 						HP = 1;
 					}
 
@@ -71,11 +73,6 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 				}
 			}
 		}
-
-
-
-
-
 
 		HP--;
 
@@ -85,7 +82,7 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 		}
 
 		if (del) {
-			E.erase(E.begin() + index);
+			Entities.erase(Entities.begin() + index);
 			index--;
 			//E.shrink_to_fit();//Maybe?
 			delete this;
@@ -94,14 +91,25 @@ void Bullet::Update(std::vector<GameObject*>& E, int &index) {
 
 	}
 	else {
-		E.erase(E.begin() + index);
+		Entities.erase(Entities.begin() + index);
 		delete this;
 	}
 	
 
 }
 void Bullet::Render() {
-	if (HP>=0)
+
+	srcRect.h = 32;
+	srcRect.w = 32;
+	srcRect.x = 0;
+	srcRect.y = 0;
+
+	
+	destRect.x = xpos;
+	destRect.y = ypos;
+	destRect.w = srcRect.w;
+	destRect.h = srcRect.h;
+	
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
 }
 

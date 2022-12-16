@@ -6,6 +6,7 @@
 #include "Handler.h"
 #include <vector>
 #include <list>
+#include <memory>
 
 class Game
 {
