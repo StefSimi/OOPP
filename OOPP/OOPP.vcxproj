@@ -145,6 +145,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="EnemyChaser.cpp" />
+    <ClCompile Include="EnemyCrawler.cpp" />
+    <ClCompile Include="EnemyShooter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Handler.cpp" />
@@ -156,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="EnemyChaser.h" />
+    <ClInclude Include="EnemyCrawler.h" />
+    <ClInclude Include="EnemyShooter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Handler.h" />

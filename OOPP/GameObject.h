@@ -6,23 +6,23 @@ class GameObject
 {
 	public:
 		GameObject();
-		GameObject(const char* texturesheet,ID id, int x, int y,int velx, int vely,int HP,SDL_Renderer* rend);
+		GameObject(const char* texturesheet,ID id, float x, float y,float velx, float vely,int HP,SDL_Renderer* rend);
 		~GameObject();
 
-		void setX(int x);
-		void setY(int y);
+		void setX(float x);
+		void setY(float y);
 		void setID(ID id);
-		void setVelX(int velx);
-		void setVelY(int vely);
+		void setVelX(float velx);
+		void setVelY(float vely);
 		void setHP(int HP);
 
-		int getX();
-		int getY();
+		float getX();
+		float getY();
 		ID getID();
-		int getVelX();
-		int getVelY();
+		float getVelX();
+		float getVelY();
 		int getHP();
-		const int Clamp(int value, int min, int max);
+		const float Clamp(float value, float min, float max);
 
 
 		virtual void Update();
@@ -35,10 +35,10 @@ class GameObject
 		//bool intersects (SDL_Rect a, SDL_Rect b)=0;
 	
 	protected:
-		int xpos;
-		int ypos;
+		float xpos;
+		float ypos;
 		ID id;
-		int velx=0, vely=0;
+		float velx=0, vely=0;
 		int HP;
 
 	//private:

@@ -7,7 +7,7 @@ GameObject::GameObject() {
 	ypos = 0;
 }
 
-GameObject::GameObject(const char* texturesheet,ID id, int x, int y, int velx, int vely,int HP, SDL_Renderer* ren) {
+GameObject::GameObject(const char* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* ren) {
 	renderer = ren;
 	objTexture = TextureManager::LoadTexture(texturesheet, ren);
 	xpos = x;
@@ -33,38 +33,38 @@ void GameObject::Render() {
 
 }
 
-void GameObject::setX(int x) {
+void GameObject::setX(float x) {
 	xpos = x;
 }
-void GameObject::setY(int y) {
+void GameObject::setY(float y) {
 	ypos = y;
 }
 void GameObject::setID(ID id) {
 	this->id = id;
 }
-void GameObject::setVelX(int velx) {
+void GameObject::setVelX(float velx) {
 	this->velx = velx;
 }
-void GameObject::setVelY(int vely) {
+void GameObject::setVelY(float vely) {
 	this->vely = vely;
 }
 void GameObject::setHP(int HP) {
 	this->HP = HP;
 }
 
-int GameObject::getX() {
+float GameObject::getX() {
 	return xpos;
 }
-int GameObject::getY() {
+float GameObject::getY() {
 	return ypos;
 }
 ID GameObject::getID() {
 	return id;
 }
-int GameObject::getVelX() {
+float GameObject::getVelX() {
 	return velx;
 }
-int GameObject::getVelY() {
+float GameObject::getVelY() {
 	return vely;
 }
 
@@ -74,7 +74,7 @@ int GameObject::getHP() {
 }
 
 
-const int GameObject::Clamp(int value, int min, int max) {
+const float GameObject::Clamp(float value, float min, float max) {
 	if (value >= max)
 		return value = max;
 	else if (value <= min)

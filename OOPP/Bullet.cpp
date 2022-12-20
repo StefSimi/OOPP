@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(const char* texturesheet,ID id, int x, int y, int velx, int vely, int bulletDamage, int bulletRange, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+Bullet::Bullet(const char* texturesheet,ID id, float x, float y, float velx, float vely, int bulletDamage, int bulletRange, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	HP = bulletRange;
 	damage = bulletDamage;
 }
@@ -47,7 +47,7 @@ void Bullet::Update(std::vector<GameObject*>& Entities, int &index) {
 
 		SDL_Rect A = getBounds();
 		for (int i = 0; i < Entities.size(); i++) {
-			if (Entities[i]->getID() == Enemy) {
+			if (id==PlayerBullet&& Entities[i]->getID() == Enemy) {
 				SDL_Rect B = Entities[i]->getBounds();
 				if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
 
@@ -72,6 +72,9 @@ void Bullet::Update(std::vector<GameObject*>& Entities, int &index) {
 					//HP = 1;
 				}
 			}
+
+
+
 		}
 
 		HP--;
@@ -105,8 +108,8 @@ void Bullet::Render() {
 	srcRect.y = 0;
 
 	
-	destRect.x = xpos;
-	destRect.y = ypos;
+	destRect.x = (int)xpos;
+	destRect.y = (int)ypos;
 	destRect.w = srcRect.w;
 	destRect.h = srcRect.h;
 	

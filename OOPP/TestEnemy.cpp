@@ -1,14 +1,14 @@
 #include "TestEnemy.h"
 
-TestEnemy::TestEnemy(const char* texturesheet,ID id, int x, int y, int velx, int vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+TestEnemy::TestEnemy(const char* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }
 
 SDL_Rect TestEnemy::getBounds() {
 	SDL_Rect rect;
-	rect.x = xpos;
-	rect.y = ypos;
+	rect.x = (int)xpos;
+	rect.y = (int)ypos;
 	rect.w = 64;
 	rect.h = 64;
 	return rect;
@@ -51,8 +51,8 @@ void TestEnemy::Render() {
 	srcRect.x = 0;
 	srcRect.y = 0;
 
-	destRect.x = xpos;
-	destRect.y = ypos;
+	destRect.x =(int) xpos;
+	destRect.y =(int) ypos;
 	destRect.w = srcRect.w / 2;
 	destRect.h = srcRect.h / 2;
 

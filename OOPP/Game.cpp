@@ -5,7 +5,8 @@
 #include "map.h"
 #include "TestEnemy.h"
 #include "Bullet.h"
-
+#include "EnemyChaser.h"
+#include "EnemyCrawler.h"
 
 int counter = 0;
 int CurrentEnemies=0;
@@ -46,12 +47,24 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 
 		isRunning = true;
 	}
+	
+	//WIDTH 800
+	//HEIGHT 640
+	
 
+	Entities.push_back(new Player("assets/Sprite2.png", Player1, WIDTH/2, HEIGHT/2, 3, renderer));
+	Entities.push_back(new EnemyCrawler("assets/Cable.png",Enemy, 200, 30,20, renderer));
+	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 700, 500, 20, renderer));
+	//Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 400, 350, 20, renderer));
+	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 100, 444, 20, renderer));
+	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 299, 250, 20, renderer));
+	//Entities.push_back(new TestEnemy("assets/Laptop.png", Enemy, 530, 80, -2, 4,40, renderer));
+	Entities.push_back(new TestEnemy("assets/Router.png", Enemy, 121, 337, 5, -3,60, renderer));
+	Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, 50, 50, 0, 0, 100, renderer, Entities));
+	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, 50, HEIGHT -50, 0, 0, 100, renderer, Entities));
+	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, WIDTH -50, 50 / 2, 0, 0, 100, renderer, Entities));
+	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, WIDTH -50, HEIGHT -50, 0, 0, 100, renderer, Entities));
 
-	Entities.push_back(new Player("assets/Sprite2.png", Player1, 50, 50, 3, renderer));
-	Entities.push_back(new TestEnemy("assets/PC.png",Enemy, 125, 32, 3, 0,20, renderer));
-	Entities.push_back(new TestEnemy("assets/Laptop.png", Enemy, 530, 80, -2, 4,40, renderer));
-	Entities.push_back (new TestEnemy("assets/Router.png", Enemy, 121, 337, 5, -3,60, renderer));
 
 	map = new Map(renderer);
 }

@@ -1,8 +1,6 @@
-﻿  Game.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Game.cpp(117,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Stefan\Desktop\OOPP\OOPP\Game.cpp(145,20): warning C4018: '<': signed/unsigned mismatch
-  Player.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(119,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(138,13): warning C4101: 'pos': unreferenced local variable
-  Generating Code...
+﻿  EnemyCrawler.cpp
+C:\Users\Stefan\Desktop\OOPP\OOPP\EnemyCrawler.cpp(51,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Stefan\Desktop\OOPP\OOPP\EnemyCrawler.cpp(52,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Stefan\Desktop\OOPP\OOPP\EnemyCrawler.cpp(59,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Stefan\Desktop\OOPP\OOPP\EnemyCrawler.cpp(60,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   OOPP.vcxproj -> C:\Users\Stefan\Desktop\OOPP\Debug\OOPP.exe

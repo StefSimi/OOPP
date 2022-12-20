@@ -8,7 +8,7 @@
 class Bullet : public GameObject
 {
 	public:
-	Bullet(const char* texturesheet,ID id, int x, int y, int velx, int vely,int bulletDamage, int bulletRange, SDL_Renderer* rend);
+		Bullet(const char* texturesheet, ID id, float x, float y, float velx, float vely, int bulletDamage, int bulletRange, SDL_Renderer* rend);
 	~Bullet();
 	virtual void Update(std::vector<GameObject*> &Entities,int &index);
 	virtual void Render();

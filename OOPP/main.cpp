@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <time.h>
 #define WIDTH 800
 #define HEIGHT 640
 
@@ -6,7 +7,7 @@ Game* game = nullptr;
 
 int main(int argc, char* argv[])
 {
-
+	srand(time(NULL));
 	const int FPS = 60;
 	const int frameDelay = 1000 / FPS;
 

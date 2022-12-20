@@ -1,15 +1,15 @@
 #include "Player.h"
 #include "Bullet.h"
 
-Player::Player(const char* texturesheet,ID id, int x, int y,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+Player::Player(const char* texturesheet,ID id, float x, float y,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }
 
 SDL_Rect Player::getBounds() {
 	SDL_Rect rect;
-	rect.x = xpos;
-	rect.y = ypos;
+	rect.x = (int)xpos;
+	rect.y = (int)ypos;
 	rect.w = 12*4;
 	rect.h = 27*4;
 	return rect;
@@ -159,8 +159,8 @@ void Player::Render() {
 	
 
 
-	destRect.x = xpos;
-	destRect.y = ypos;
+	destRect.x = (int)xpos;
+	destRect.y = (int)ypos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);

@@ -8,7 +8,7 @@
 class Player :public GameObject
 {
 public:
-	Player(const char* texturesheet,ID id, int x, int y,int HP,SDL_Renderer* rend);
+	Player(const char* texturesheet,ID id, float x, float y,int HP,SDL_Renderer* rend);
 	virtual void Update(std::vector<GameObject*> &Entities, bool &running);
 	virtual void Render();
 	virtual void OnHit();
