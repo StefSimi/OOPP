@@ -4,14 +4,19 @@
 #include "SDL.h"
 #include "TestEnemy.h"
 #include "Bullet.h"
-
+#include "TextureFactory.h"
 class Player :public GameObject
 {
 public:
-	Player(const char* texturesheet,ID id, float x, float y,int HP,SDL_Renderer* rend);
-	virtual void Update(std::vector<GameObject*> &Entities, bool &running);
+	Player(SDL_Texture* texturesheet,ID id, float x, float y,int HP,SDL_Renderer* rend);
+	Player(SDL_Texture* texturesheet,IDGenerator& id_generator, float x, float y, int HP, SDL_Renderer* rend);
+	virtual void Update(TextureFactory *TF,std::vector<GameObject*> &Entities, bool &running);
 	virtual void Render();
 	virtual void OnHit();
+	virtual Player* clone() const;
+
+
+
 	virtual SDL_Rect getBounds();
 	/*int getHP();
 	void setHP(int HP);*/
@@ -33,7 +38,7 @@ private:
 	int currentbulletDelay = 0;
 	int currenthitDelay = 0;
 
-	bool keyDown[4] = { 0 };
+	bool keyDown[8] = { 0 };
 };
 
 

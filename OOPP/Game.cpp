@@ -7,6 +7,21 @@
 #include "Bullet.h"
 #include "EnemyChaser.h"
 #include "EnemyCrawler.h"
+#include "TextureFactory.h"
+
+template <class T>
+void entityTest(T a) {
+	std::cout << "Invalid entity"<<std::endl;
+}
+template<>
+void entityTest(Player* p) {
+	std::cout << "Player. HP= "<<p->getHP()<<", xpos= "<<p->getX()<<", ypos= "<<p->getY()<<std::endl;
+}
+template<>
+void entityTest(Bullet* b) {
+	std::cout << "Bullet"<<std::endl;
+}
+
 
 int counter = 0;
 int CurrentEnemies=0;
@@ -23,10 +38,15 @@ Map* map;
  SDL_Renderer* Game::getRenderer(){
 	return renderer;
 }
+ TextureFactory* TF;
+
+ Game* Game::instance = nullptr;
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
+	
 	std::cout << "HP= 3\n";
 	//handler = new Handler();
+	IDGenerator idg;
 	Game::renderer = nullptr;
 	
 	int flags = 0;
@@ -50,24 +70,33 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 	
 	//WIDTH 800
 	//HEIGHT 640
+
+	TF = new TextureFactory(renderer);
+	TF->getTexture("assets/Sprite2.png");
 	
 
-	Entities.push_back(new Player("assets/Sprite2.png", Player1, WIDTH/2, HEIGHT/2, 3, renderer));
-	Entities.push_back(new EnemyCrawler("assets/Cable.png",Enemy, 200, 30,20, renderer));
-	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 700, 500, 20, renderer));
-	//Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 400, 350, 20, renderer));
-	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 100, 444, 20, renderer));
-	Entities.push_back(new EnemyCrawler("assets/Cable.png", Enemy, 299, 250, 20, renderer));
-	//Entities.push_back(new TestEnemy("assets/Laptop.png", Enemy, 530, 80, -2, 4,40, renderer));
-	Entities.push_back(new TestEnemy("assets/Router.png", Enemy, 121, 337, 5, -3,60, renderer));
-	Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, 50, 50, 0, 0, 100, renderer, Entities));
-	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, 50, HEIGHT -50, 0, 0, 100, renderer, Entities));
-	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, WIDTH -50, 50 / 2, 0, 0, 100, renderer, Entities));
-	//Entities.push_back(new EnemyChaser("assets/Ionut.png", Enemy, WIDTH -50, HEIGHT -50, 0, 0, 100, renderer, Entities));
+	Entities.push_back(new Player(TF->getTexture("assets/Sprite2.png"), Player1, WIDTH/2, HEIGHT/2, 3, renderer));
+	//For testing ID Generation
+	//Entities.push_back(new Player(TF->getTexture("assets/Sprite2.png"), idg, WIDTH / 2, HEIGHT / 2, 3, renderer));
+
+	
+	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 700, 500, 20, renderer));
+	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 100, 444, 20, renderer));
+	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 299, 250, 20, renderer));
+	Entities.push_back(new EnemyChaser(TF->getTexture("assets/Ionut.png"), Enemy, WIDTH -50, 50 / 2, 0, 0, 100, renderer, Entities));
 
 
 	map = new Map(renderer);
 }
+
+Game* Game::getInstance(const char* title, int width, int height, bool fullscreen)
+{
+	if (instance == nullptr) {
+		instance = new Game(title, width, height, fullscreen);
+	}
+	return instance;
+}
+
 
 Game::~Game()
 {
@@ -116,6 +145,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
+	//Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 700, 500, 2, renderer));
 	CurrentEnemies = 0;
 	//For Debugging
 	/*counter++;
@@ -127,23 +157,26 @@ void Game::update()
 	}*/
 
 	
-	for (int i = 0; i < Entities.size(); i++)
+	for (int i = 0; i < Entities.size(); i++) {
 		switch (Entities[i]->getID()) {
 		case Player1: {
 			Player* p = reinterpret_cast<Player*>(Entities[i]);
-			p->Update(Entities, isRunning);
-			}
-			break;
+			p->Update(TF, Entities, isRunning);
+			//entityTest(p);
+		}
+					break;
 		case Enemy:
 			CurrentEnemies++;
 			Entities[i]->Update();
 			break;
 		case PlayerBullet:
 			Bullet* b = reinterpret_cast<Bullet*>(Entities[i]);
-			b->Update(Entities,i);
+			b->Update(Entities, i);
+			//entityTest(b);
 			break;
 
 		}
+	}
 	if (CurrentEnemies == 0 && spamfilter == false) {
 		spamfilter = true;
 		std::cout << "Room Clear" << std::endl;

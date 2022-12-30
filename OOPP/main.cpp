@@ -15,8 +15,8 @@ int main(int argc, char* argv[])
 	int frameTime;
 
 
-
-	game = new Game("Window", WIDTH, HEIGHT, false);
+	//game = new Game("Window", WIDTH, HEIGHT, false);
+	game = Game::getInstance("Window", WIDTH, HEIGHT, false);
 	//game->init("GameWindow", 800, 600, false);
 
 	while (game->running())

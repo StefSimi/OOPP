@@ -1,12 +1,13 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(const char* texturesheet,ID id, float x, float y, float velx, float vely, int bulletDamage, int bulletRange, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+Bullet::Bullet(SDL_Texture* texturesheet,ID id, float x, float y, float velx, float vely, int bulletDamage, int bulletRange, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	HP = bulletRange;
 	damage = bulletDamage;
 }
 Bullet::~Bullet(){
-	SDL_DestroyTexture(objTexture);
+	//SDL_DestroyTexture(objTexture);
+	//delete this;
 }
 SDL_Rect Bullet::getBounds() {
 	SDL_Rect rect;
@@ -118,5 +119,10 @@ void Bullet::Render() {
 
 void Bullet::OnHit() {
 
+}
+
+Bullet* Bullet::clone() const
+{
+	return new Bullet(*this);
 }
 

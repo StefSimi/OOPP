@@ -1,12 +1,13 @@
 #pragma once
 #include "Game.h"
 #include "ID.h"
-
+#include "TextureFactory.h"
+#include "IDGenerator.h"
 class GameObject
 {
 	public:
 		GameObject();
-		GameObject(const char* texturesheet,ID id, float x, float y,float velx, float vely,int HP,SDL_Renderer* rend);
+		GameObject(SDL_Texture* texturesheet,ID id, float x, float y,float velx, float vely,int HP,SDL_Renderer* rend);
 		~GameObject();
 
 		void setX(float x);
@@ -29,6 +30,7 @@ class GameObject
 		virtual void Render()=0;
 		virtual void OnHit()=0;
 		virtual SDL_Rect getBounds() = 0;
+		virtual GameObject* clone() const = 0;
 
 
 

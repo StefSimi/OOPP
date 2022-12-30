@@ -3,15 +3,23 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
-#include "Handler.h"
 #include <vector>
 #include <list>
 #include <memory>
 
 class Game
 {
-public:
+protected:
 	Game(const char* title, int width, int height, bool fullscreen);
+	static Game* instance;
+	
+
+public:
+	static Game *getInstance(const char* title, int width, int height, bool fullscreen);
+
+	void operator=(const Game&) = delete;
+	Game(Game& game) = delete;
+
 	~Game();
 
 	void init(const char* title, int width, int height, bool fullscreen);
@@ -29,6 +37,7 @@ public:
 	static SDL_Event event;
 	
 private:
+	
 	//Handler handler;
 	bool isRunning = false;
 	float cnt = 0;

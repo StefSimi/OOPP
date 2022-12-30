@@ -1,8 +1,14 @@
 #include "Player.h"
 #include "Bullet.h"
 
-Player::Player(const char* texturesheet,ID id, float x, float y,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+Player::Player(SDL_Texture* texturesheet,ID id, float x, float y,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
+
+}
+Player::Player(SDL_Texture* texturesheet,IDGenerator &id_generator, float x, float y, int HP, SDL_Renderer* rend) : GameObject(texturesheet, id, x, y, velx, vely, HP, rend) {
+	this->HP = HP;
+	id = (ID) id_generator.getNextID();
+	std::cout << id << "Testing" << std::endl;
 
 }
 
@@ -32,7 +38,7 @@ bool Player::getKeyDown(int index) {
 }
 
 
-void Player::Update(std::vector<GameObject*>&Entities, bool &running ) {
+void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &running ) {
 	try {
 		xpos = Clamp(xpos + velx, 32, WIDTH - destRect.w - 32);
 		ypos = Clamp(ypos + vely, 32, HEIGHT - destRect.h - 32);
@@ -40,49 +46,33 @@ void Player::Update(std::vector<GameObject*>&Entities, bool &running ) {
 
 		currenthitDelay = Clamp(currenthitDelay - 1, 0, 60);
 		currentbulletDelay = Clamp(currentbulletDelay - 1, 0, 100);
-
+		
 		if (Game::event.type == SDL_KEYDOWN) {
 			switch (Game::event.key.keysym.sym)
 			{
 			case SDLK_w:
-				vely = -speed;
 				keyDown[0] = true;
 				break;
 			case SDLK_s:
-				vely = speed;
 				keyDown[1] = true;
 				break;
 			case SDLK_a:
-				velx = -speed;
 				keyDown[2] = true;
 				break;
 			case SDLK_d:
-				velx = speed;
 				keyDown[3] = true;
 				break;
 			case SDLK_UP:
-				if (currentbulletDelay == 0) {
-					currentbulletDelay = bulletDelay;
-					Entities.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, 0 + velx, -speed - 3 + vely / 2, bulletDamage, bulletRange, renderer));
-				}
+				keyDown[4] = true;
 				break;
 			case SDLK_DOWN:
-				if (currentbulletDelay == 0) {
-					currentbulletDelay = bulletDelay;
-					Entities.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, 0 + velx, speed + 3 + vely / 2, bulletDamage, bulletRange, renderer));
-				}
+				keyDown[5] = true;
 				break;
 			case SDLK_LEFT:
-				if (currentbulletDelay == 0) {
-					currentbulletDelay = bulletDelay;;
-					Entities.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, -speed - 3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
-				}
+				keyDown[6] = true;
 				break;
 			case SDLK_RIGHT:
-				if (currentbulletDelay == 0) {
-					currentbulletDelay = bulletDelay;
-					Entities.push_back(new Bullet("assets/Bullet.png", PlayerBullet, xpos, ypos, speed + 3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
-				}
+				keyDown[7] = true;
 				break;
 			default:
 				break;
@@ -104,16 +94,68 @@ void Player::Update(std::vector<GameObject*>&Entities, bool &running ) {
 			case SDLK_d:
 				keyDown[3] = false;
 				break;
+			case SDLK_UP:
+				keyDown[4] = false;
+				break;
+			case SDLK_DOWN:
+				keyDown[5] = false;
+				break;
+			case SDLK_LEFT:
+				keyDown[6] = false;
+				break;
+			case SDLK_RIGHT:
+				keyDown[7] = false;
+				break;
+
 			default:
 				break;
 			}
-			if (!keyDown[0] && !keyDown[1])
-				vely = 0;
-			if (!keyDown[2] && !keyDown[3])
-				velx = 0;
+			
+
+			
+
+		}
+		if (!keyDown[0] && !keyDown[1])
+			vely = 0;
+		if (!keyDown[2] && !keyDown[3])
+			velx = 0;
+		if (keyDown[0] == true) {
+			vely = -speed;
+		}
+		if (keyDown[1] == true) {
+			vely = speed;
+		}
+		if (keyDown[2] == true) {
+			velx = -speed;
+		}
+		if (keyDown[3] == true) {
+			velx = speed;
+		}
+		if (keyDown[0] && keyDown[1]) {
+			vely = 0;
+		}
+		if (keyDown[2] && keyDown[3]) {
+			velx = 0;
+		}
+
+		if (keyDown[4] == true && currentbulletDelay == 0) {
+			Entities.push_back(new Bullet(TF->getTexture("assets/Bullet.png"), PlayerBullet, xpos, ypos, 0 + velx, -speed - 3 + vely / 2, bulletDamage, bulletRange, renderer));
+			currentbulletDelay = bulletDelay;
+		}
+		if (keyDown[5] == true && currentbulletDelay == 0) {
+			Entities.push_back(new Bullet(TF->getTexture("assets/Bullet.png"), PlayerBullet, xpos, ypos, 0 + velx, speed + 3 + vely / 2, bulletDamage, bulletRange, renderer));
+			currentbulletDelay = bulletDelay;
+		}
+		if (keyDown[6] == true && currentbulletDelay == 0) {
+			Entities.push_back(new Bullet(TF->getTexture("assets/Bullet.png"), PlayerBullet, xpos, ypos, -speed - 3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
+			currentbulletDelay = bulletDelay;
+		}
+		if (keyDown[7] == true && currentbulletDelay == 0) {
+			Entities.push_back(new Bullet(TF->getTexture("assets/Bullet.png"), PlayerBullet, xpos, ypos, speed + 3 + velx / 2, 0 + vely, bulletDamage, bulletRange, renderer));
+			currentbulletDelay = bulletDelay;
 		}
 		
-
+		
 
 		SDL_Rect A = getBounds();
 		for (int i = 0; i < Entities.size(); i++) {
@@ -129,7 +171,7 @@ void Player::Update(std::vector<GameObject*>&Entities, bool &running ) {
 		}
 
 		//COMMENT IF DEBUGGING
-		if (HP < 0) { running = false; }
+		//if (HP < 0) { running = false; }
 
 		if (xpos<0 || xpos>WIDTH || ypos < 0 ||ypos>HEIGHT)
 			throw(xpos);
@@ -169,4 +211,9 @@ void Player::Render() {
 
 void Player::OnHit() {
 
+}
+
+Player* Player::clone() const
+{
+	return new Player(*this);
 }

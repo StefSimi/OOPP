@@ -51,6 +51,12 @@
     <ClCompile Include="EnemyShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IDGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnemyShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

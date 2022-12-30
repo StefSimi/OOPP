@@ -1,6 +1,6 @@
 #include "TestEnemy.h"
 
-TestEnemy::TestEnemy(const char* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
+TestEnemy::TestEnemy(SDL_Texture* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
 
 }
@@ -16,9 +16,14 @@ SDL_Rect TestEnemy::getBounds() {
 
 }
 
+TestEnemy* TestEnemy::clone() const
+{
+	return new TestEnemy(*this);
+}
+
 TestEnemy::~TestEnemy() {
-	//free texture
-	delete this;
+	SDL_DestroyTexture(objTexture);
+	//delete this;
 }
 
 /*void TestEnemy::setHP(int HP) {

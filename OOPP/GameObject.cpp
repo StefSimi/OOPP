@@ -7,9 +7,9 @@ GameObject::GameObject() {
 	ypos = 0;
 }
 
-GameObject::GameObject(const char* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* ren) {
+GameObject::GameObject(SDL_Texture* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* ren) {
 	renderer = ren;
-	objTexture = TextureManager::LoadTexture(texturesheet, ren);
+	objTexture = texturesheet;
 	xpos = x;
 	ypos = y;
 	this->velx = velx;
@@ -19,7 +19,7 @@ GameObject::GameObject(const char* texturesheet,ID id, float x, float y, float v
 
 }
 GameObject::~GameObject() {
-	SDL_DestroyTexture(objTexture);
+	//SDL_DestroyTexture(objTexture);
 }
 
 void GameObject::Update() {

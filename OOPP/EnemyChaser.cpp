@@ -1,7 +1,7 @@
 #include "EnemyChaser.h"
 #include "TestEnemy.h"
 
-EnemyChaser::EnemyChaser(const char* texturesheet, ID id, float x, float y, float velx, float vely, int HP, SDL_Renderer* rend, std::vector<GameObject*> &Entities) : GameObject(texturesheet, id, x, y, velx, vely, HP, rend) {
+EnemyChaser::EnemyChaser(SDL_Texture* texturesheet, ID id, float x, float y, float velx, float vely, int HP, SDL_Renderer* rend, std::vector<GameObject*> &Entities) : GameObject(texturesheet, id, x, y, velx, vely, HP, rend) {
 	this->HP = HP;
 	for (int i = 0; i < Entities.size(); i++) {
 		if (Entities[i]->getID() == Player1) {
@@ -24,9 +24,14 @@ SDL_Rect EnemyChaser::getBounds() {
 
 }
 
+EnemyChaser* EnemyChaser::clone() const
+{
+	return new EnemyChaser(*this);
+}
+
 EnemyChaser::~EnemyChaser() {
-	//free texture
-	delete this;
+	SDL_DestroyTexture(objTexture);
+	//delete this;
 }
 
 

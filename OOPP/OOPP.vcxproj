@@ -151,10 +151,12 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Handler.cpp" />
+    <ClCompile Include="IDGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TestEnemy.cpp" />
+    <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,9 +168,11 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Handler.h" />
     <ClInclude Include="ID.h" />
+    <ClInclude Include="IDGenerator.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TestEnemy.h" />
+    <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,6 @@
 #include "EnemyCrawler.h"
 
-EnemyCrawler::EnemyCrawler(const char* texturesheet, ID id, float x, float y, int HP, SDL_Renderer* rend) : GameObject(texturesheet, id, x, y,velx,vely, HP, rend) {
+EnemyCrawler::EnemyCrawler(SDL_Texture* texturesheet, ID id, float x, float y, int HP, SDL_Renderer* rend) : GameObject(texturesheet, id, x, y,velx,vely, HP, rend) {
 	this->HP = HP;
 	active = false;
 	frameCounter = rand() % 20;
@@ -17,9 +17,14 @@ SDL_Rect EnemyCrawler::getBounds() {
 
 }
 
+EnemyCrawler* EnemyCrawler::clone() const
+{
+	return new EnemyCrawler(*this);
+}
+
 EnemyCrawler::~EnemyCrawler() {
-	//free texture
-	delete this;
+	SDL_DestroyTexture(objTexture);
+	//delete this;
 }
 
 
