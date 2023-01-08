@@ -1,14 +1,2 @@
-﻿  Player.cpp
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(43,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(44,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(47,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(47,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(48,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(48,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(123,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(126,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(129,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(132,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(161,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Stefan\Desktop\OOPP\OOPP\Player.cpp(180,13): warning C4101: 'pos': unreferenced local variable
+﻿  Map.cpp
   OOPP.vcxproj -> C:\Users\Stefan\Desktop\OOPP\Debug\OOPP.exe

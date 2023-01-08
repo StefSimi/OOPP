@@ -13,11 +13,9 @@ public:
 	virtual void OnHit();
 	virtual SDL_Rect getBounds();
 	virtual EnemyChaser* clone() const;
-	/*void setHP(int HP);
-	int getHP();*/
+	
 
 private:
-	int HP;
 	GameObject* PlayerToChase;
 
 };

@@ -6,6 +6,7 @@
 #include <vector>
 #include <list>
 #include <memory>
+#include "HUD.h"
 
 class Game
 {
@@ -44,4 +45,5 @@ private:
 	int testing = 1;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	HUD* hud;
 };

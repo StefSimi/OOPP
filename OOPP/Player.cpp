@@ -16,12 +16,12 @@ SDL_Rect Player::getBounds() {
 	SDL_Rect rect;
 	rect.x = (int)xpos;
 	rect.y = (int)ypos;
-	rect.w = 12*4;
-	rect.h = 27*4;
+	rect.w = 16*3;
+	rect.h = 32*3;
 	return rect;
 
 }
-std::ostream& operator<<(std::ostream& os,   Player* p) {
+std::ostream& operator<<(std::ostream& os, Player* p) {
 	if (p->HP<0) {
 		os << "You died.\n";
 		return os;
@@ -33,16 +33,59 @@ std::ostream& operator<<(std::ostream& os,   Player* p) {
 void Player::setKeyDown(int index, bool value) {
 	keyDown[index] = value;
 }
+void Player::clearBullets(std::vector<GameObject*>& Entities)
+{
+	for (int i = 0; i < Entities.size(); i++) {
+		if (Entities[i]->getID() == PlayerBullet) {
+			Entities[i]->setHP(1);
+		}
+	}
+}
 bool Player::getKeyDown(int index) {
 	return keyDown[index];
 }
 
+bool Player::getRico()
+{
+	return hasRico;
+}
 
-void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &running ) {
+
+void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &running,Map *map) {
 	try {
+
+
+	
+
 		xpos = Clamp(xpos + velx, 32, WIDTH - destRect.w - 32);
 		ypos = Clamp(ypos + vely, 32, HEIGHT - destRect.h - 32);
+		//std::cout << map->getCurrentRoom()->getcleared();
+		if (map->getCurrentRoom()->getcleared()) {
+			if (ypos <= 32 && xpos >= 336 && xpos <= 400&&map->getCurrentRoom()->getNorth()!=nullptr) {
+				positionPlayer(2);
+				clearBullets(Entities);
+				map->enterRoom(map->getCurrentRoom(),renderer,TF,Entities,1);
 
+			}
+			if (ypos >= 500 && xpos >= 336 && xpos <= 400 && map->getCurrentRoom()->getSouth ()!= nullptr) {
+				positionPlayer(1);
+				clearBullets(Entities);
+				map->enterRoom(map->getCurrentRoom(), renderer, TF, Entities, 2);
+			}
+
+			if (xpos >= 720 && ypos >= 206 && ypos <= 270 && map->getCurrentRoom()->getEast() != nullptr) {
+				positionPlayer(4);
+				clearBullets(Entities);
+				map->enterRoom(map->getCurrentRoom(), renderer, TF, Entities, 3);
+			}
+
+			if (xpos <= 32 && ypos >= 206 && ypos <= 270 && map->getCurrentRoom()->getWest() != nullptr) {
+				positionPlayer(3);
+				clearBullets(Entities);
+				map->enterRoom(map->getCurrentRoom(), renderer, TF, Entities, 4);
+			}
+
+		}
 
 		currenthitDelay = Clamp(currenthitDelay - 1, 0, 60);
 		currentbulletDelay = Clamp(currentbulletDelay - 1, 0, 100);
@@ -137,6 +180,23 @@ void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &
 		if (keyDown[2] && keyDown[3]) {
 			velx = 0;
 		}
+		if (keyDown[0] && keyDown[2]) {
+			vely= -speed / sqrt(2);
+			velx = -speed / sqrt(2);
+		}
+		if (keyDown[0] && keyDown[3]) {
+			vely = -speed / sqrt(2);
+			velx = speed / sqrt(2);
+		}
+		if (keyDown[1] && keyDown[2]) {
+			vely = speed / sqrt(2);
+			velx = -speed / sqrt(2);
+		}
+		if (keyDown[1] && keyDown[3]) {
+			vely = speed / sqrt(2);
+			velx = speed / sqrt(2);
+		}
+		//std::cout << velx << " " << vely << std::endl;
 
 		if (keyDown[4] == true && currentbulletDelay == 0) {
 			Entities.push_back(new Bullet(TF->getTexture("assets/Bullet.png"), PlayerBullet, xpos, ypos, 0 + velx, -speed - 3 + vely / 2, bulletDamage, bulletRange, renderer));
@@ -159,20 +219,40 @@ void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &
 
 		SDL_Rect A = getBounds();
 		for (int i = 0; i < Entities.size(); i++) {
-			if (Entities[i]->getID() == Enemy) {
+			if (Entities[i]->getID() == Enemy|| Entities[i]->getID() == EnemyBullet || Entities[i]->getID() == Boss) {
 				SDL_Rect B = Entities[i]->getBounds();
 				if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y && currenthitDelay == 0) {
-					HP--;
-					currenthitDelay = hitDelay;
-
-					std::cout << this;
+					getHit();
+					//std::cout << "test in pll";
+					//std::cout << this;
+					if (Entities[i]->getID() == EnemyBullet)
+						Entities[i]->setHP(1);
 				}
+			}
+			if (Entities[i]->getID() == PassiveItem) {
+				SDL_Rect B = Entities[i]->getBounds();
+				if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y && currenthitDelay == 0) {
+					Item* item = reinterpret_cast<Item*>(Entities[i]);
+					switch (item->getType()) {
+					case 1:
+						hasRico = true;
+						bulletRange += 40;
+						break;
+					case 2:
+						HP++;
+						break;
+					default:
+						break;
+					}
+					Entities.erase(Entities.begin() + i);
+				}
+				
+
 			}
 		}
 
 		//COMMENT IF DEBUGGING
-		//if (HP < 0) { running = false; }
-
+		if (HP < 0) { running = false; }
 		if (xpos<0 || xpos>WIDTH || ypos < 0 ||ypos>HEIGHT)
 			throw(xpos);
 
@@ -182,18 +262,19 @@ void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &
 
 	}
 	
+	//std::cout << xpos << " " << ypos << std::endl;
 }
 
 void Player::Render() {
 	if (velx < 0)
-		srcRect.x = 13;
+		srcRect.x = 17;
 	else
 		if (velx > 0)
 			srcRect.x = 0;
 
 
-	srcRect.h = 27;
-	srcRect.w = 12;
+	srcRect.h = 32;
+	srcRect.w = 16;
 	//srcRect.x = 0;
 	srcRect.y = 0;
 
@@ -203,8 +284,8 @@ void Player::Render() {
 
 	destRect.x = (int)xpos;
 	destRect.y = (int)ypos;
-	destRect.w = srcRect.w * 4;
-	destRect.h = srcRect.h * 4;
+	destRect.w = srcRect.w * 3;
+	destRect.h = srcRect.h * 3;
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
 	
 }
@@ -216,4 +297,41 @@ void Player::OnHit() {
 Player* Player::clone() const
 {
 	return new Player(*this);
+}
+
+void Player::getHit()
+{
+	if (currenthitDelay == 0) {
+		HP--;
+		currenthitDelay = hitDelay;
+	}
+}
+
+void Player::positionPlayer(int entryway)
+{
+	switch (entryway) {
+	case 1:
+		//goes down
+		xpos=(380);
+		ypos=(33);
+		break;
+	case 2:
+		//goes up
+		xpos=(380);
+		ypos=(499);
+		break;
+	case 3:
+		//right
+		xpos=(719);
+		ypos=(250);
+		break;
+	case 4:
+		//left
+		xpos=(33);
+		ypos=(250);
+		break;
+	default:
+		break;
+
+	}
 }

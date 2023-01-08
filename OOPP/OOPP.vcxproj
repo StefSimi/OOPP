@@ -147,15 +147,19 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EnemyChaser.cpp" />
     <ClCompile Include="EnemyCrawler.cpp" />
+    <ClCompile Include="EnemyDobrovat.cpp" />
     <ClCompile Include="EnemyShooter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Handler.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="IDGenerator.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="map.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="TestEnemy.cpp" />
+    <ClCompile Include="EnemyBasic.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -163,15 +167,19 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="EnemyChaser.h" />
     <ClInclude Include="EnemyCrawler.h" />
+    <ClInclude Include="EnemyDobrovat.h" />
     <ClInclude Include="EnemyShooter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Handler.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="ID.h" />
     <ClInclude Include="IDGenerator.h" />
-    <ClInclude Include="map.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="TestEnemy.h" />
+    <ClInclude Include="EnemyBasic.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>

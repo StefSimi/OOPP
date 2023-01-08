@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <time.h>
+#include <fstream>
 #define WIDTH 800
 #define HEIGHT 640
 

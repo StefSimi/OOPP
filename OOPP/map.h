@@ -1,18 +1,28 @@
 #pragma once
+#include "Room.h"
 #include "Game.h"
+#include "GameObject.h"
+#include <fstream>
+#include <cstring>
+#include "EnemyCrawler.h"
+#include "EnemyChaser.h"
+#include "EnemyBasic.h"
+#include "Item.h"
+#include "EnemyDobrovat.h"
 class Map
 {
 public:
-	Map(SDL_Renderer* rend);
-	~Map();
-
-	void LoadMap(int arr[20][25]);
-	void DrawMap(SDL_Renderer* rend);
+	Map(SDL_Renderer* rend, TextureFactory* TF, std::vector<GameObject*>& Entities);
+	Room* getCurrentRoom();
+	void enterRoom(Room* r, SDL_Renderer* rend, TextureFactory* TF, std::vector<GameObject*>& Entities,int entryway);
+	void positionPlayer(int entryway, std::vector<GameObject*>& Entities);
 private:
-	SDL_Rect src, dest;
-	SDL_Texture* tile1;
-	SDL_Texture* tile2;
-	SDL_Texture* tile3;
-	int map[20][25];
+	Room* CurrentRoom;
+	Room* r1=nullptr;
+	Room* r2=nullptr;
+	Room* r3=nullptr;
+	Room* r4 = nullptr;
+	Room* r5 = nullptr;
+	Room* r6 = nullptr;
 };
 

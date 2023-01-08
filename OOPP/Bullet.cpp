@@ -17,49 +17,37 @@ SDL_Rect Bullet::getBounds() {
 	rect.h = 32;
 	return rect;
 }
-void Bullet::Update(std::vector<GameObject*>& Entities, int &index) {
+void Bullet::Update(std::vector<GameObject*>& Entities,TextureFactory* TF, int &index, bool rico) {
 	bool del = false;
 	if (HP > 0) {
 
-		/*
-		srcRect.h = 32;
-		srcRect.w = 32;
-		srcRect.x = 0;
-		srcRect.y = 0;
+		if (rico&&id==PlayerBullet) {
 
-		xpos += velx;
-		ypos += vely;
-		/*
-		//Ricochet
-		if (xpos + srcRect.w > WIDTH || xpos < 0)
-			velx *= -1;
-		if (ypos + srcRect.h > HEIGHT || ypos < 0)
-			vely *= -1;
-
-		*/
-		/*
-		destRect.x = xpos;
-		destRect.y = ypos;
-		destRect.w = srcRect.w;
-		destRect.h = srcRect.h;*/
-
+			if (xpos + srcRect.w > WIDTH-32 || xpos < 32)
+				velx *= -1;
+			if (ypos + srcRect.h > HEIGHT-32 || ypos < 32)
+				vely *= -1;
+		}
+		//Todo texturi usi texturi cleanup
+		
 		xpos += velx;
 		ypos += vely;
 
 		SDL_Rect A = getBounds();
 		for (int i = 0; i < Entities.size(); i++) {
-			if (id==PlayerBullet&& Entities[i]->getID() == Enemy) {
+			if (id==PlayerBullet&& (Entities[i]->getID() == Enemy|| Entities[i]->getID() == Boss)) {
 				SDL_Rect B = Entities[i]->getBounds();
 				if (A.x + A.w >= B.x && B.x + B.w >= A.x && A.y + A.h >= B.y && B.y + B.h >= A.y) {
 
 					Entities[i]->setHP(Entities[i]->getHP() - damage);
 					if (Entities[i]->getHP() <= 0) {
+						if (rand() % 4 == 2) {
+							Entities.push_back(new Item(TF->getTexture("assets/Heart.png"), PassiveItem, Entities[i]->getX(),Entities[i]->getY(), renderer, 2));
+						}
 						std::cout << "Killed Enemy " << i << std::endl;
 						Entities.erase(Entities.begin() + i);
-						//std::cout << "Test";
-						//delete E[i];
 						Entities.shrink_to_fit();
-						//i--;
+						
 						index--;
 						HP = 1;
 						break;
@@ -73,6 +61,7 @@ void Bullet::Update(std::vector<GameObject*>& Entities, int &index) {
 					//HP = 1;
 				}
 			}
+			
 
 
 

@@ -63,9 +63,9 @@ void EnemyCrawler::Update() {
 	if (active) {
 		xpos = Clamp(xpos + velx, 32, WIDTH - destRect.w - 32);
 		ypos = Clamp(ypos + vely, 32, HEIGHT - destRect.h - 32);
-		if (xpos + srcRect.w / 2 > WIDTH - 32 || xpos < 32)
+		if (xpos + srcRect.w / 4 > WIDTH - 32 || xpos < 32)
 			velx *= -1;
-		if (ypos + srcRect.h / 2 > HEIGHT - 32 || ypos < 32)
+		if (ypos + srcRect.h / 4 > HEIGHT - 32 || ypos < 32)
 			vely *= -1;
 	}
 	

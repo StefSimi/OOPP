@@ -4,6 +4,7 @@ enum ID {
 	Player1,
 	Enemy,
 	PlayerBullet,
-	EnemyBullet
-
+	EnemyBullet,
+	PassiveItem,
+	Boss
 };

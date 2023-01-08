@@ -2,12 +2,13 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
-#include "map.h"
-#include "TestEnemy.h"
+#include "Room.h"
+#include "EnemyBasic.h"
 #include "Bullet.h"
 #include "EnemyChaser.h"
 #include "EnemyCrawler.h"
 #include "TextureFactory.h"
+#include "EnemyBasic.h"
 
 template <class T>
 void entityTest(T a) {
@@ -26,15 +27,15 @@ void entityTest(Bullet* b) {
 int counter = 0;
 int CurrentEnemies=0;
 int size = 3, bulletsize = 1;
-bool spamfilter = 0;
+bool rico = 0;
 Player* player;
 
 std::vector <GameObject*>Entities;
 std::vector <std::unique_ptr<SDL_Texture*>> Textures;
 
 SDL_Event Game::event;
+Room* room;
 Map* map;
-
  SDL_Renderer* Game::getRenderer(){
 	return renderer;
 }
@@ -43,8 +44,6 @@ Map* map;
  Game* Game::instance = nullptr;
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
-	
-	std::cout << "HP= 3\n";
 	//handler = new Handler();
 	IDGenerator idg;
 	Game::renderer = nullptr;
@@ -75,18 +74,11 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 	TF->getTexture("assets/Sprite2.png");
 	
 
-	Entities.push_back(new Player(TF->getTexture("assets/Sprite2.png"), Player1, WIDTH/2, HEIGHT/2, 3, renderer));
-	//For testing ID Generation
-	//Entities.push_back(new Player(TF->getTexture("assets/Sprite2.png"), idg, WIDTH / 2, HEIGHT / 2, 3, renderer));
 
-	
-	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 700, 500, 20, renderer));
-	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 100, 444, 20, renderer));
-	Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 299, 250, 20, renderer));
-	Entities.push_back(new EnemyChaser(TF->getTexture("assets/Ionut.png"), Enemy, WIDTH -50, 50 / 2, 0, 0, 100, renderer, Entities));
+	Entities.push_back(new Player(TF->getTexture("assets/Player.png"), Player1, WIDTH/2, HEIGHT/2, 3, renderer));
 
-
-	map = new Map(renderer);
+	hud = new HUD(TF->getTexture("assets/Heart.png"), renderer);
+	map = new Map(renderer, TF, Entities);
 }
 
 Game* Game::getInstance(const char* title, int width, int height, bool fullscreen)
@@ -106,25 +98,7 @@ Game::~Game()
 }
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
-{/*
-	int flags = 0;
-
-	if (fullscreen)
-	{
-		flags = SDL_WINDOW_FULLSCREEN;
-	}
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
-	{
-		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
-		renderer = SDL_CreateRenderer(window, -1, 0);
-		if (renderer)
-		{
-			SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
-		}
-
-		isRunning = true;
-	}*/
+{
 }
 
 void Game::handleEvents()
@@ -145,23 +119,17 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	//Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 700, 500, 2, renderer));
 	CurrentEnemies = 0;
 	//For Debugging
-	/*counter++;
-	if (counter % 60 == 0) {
-		for (int i = 0; i < E.size(); i++) {
-			std::cout << i << " " << E[i]->getID() << std::endl;
-		}
-		counter = 1;
-	}*/
 
+	//Entities.push_back(new EnemyCrawler(TF->getTexture("assets/Cable.png"), Enemy, 700, 500, 2, renderer));
 	
 	for (int i = 0; i < Entities.size(); i++) {
 		switch (Entities[i]->getID()) {
 		case Player1: {
 			Player* p = reinterpret_cast<Player*>(Entities[i]);
-			p->Update(TF, Entities, isRunning);
+			rico = p->getRico();
+			p->Update(TF, Entities, isRunning,map);
 			//entityTest(p);
 		}
 					break;
@@ -169,28 +137,41 @@ void Game::update()
 			CurrentEnemies++;
 			Entities[i]->Update();
 			break;
-		case PlayerBullet:
+		case PlayerBullet: {
 			Bullet* b = reinterpret_cast<Bullet*>(Entities[i]);
-			b->Update(Entities, i);
+			b->Update(Entities, TF, i, rico);
 			//entityTest(b);
+		}
 			break;
-
+		case EnemyBullet: {
+			Bullet* b = reinterpret_cast<Bullet*>(Entities[i]);
+			b->Update(Entities, TF, i, rico);
+		}
+			break;
+		case Boss: {
+			CurrentEnemies++;
+			EnemyDobrovat* d = reinterpret_cast<EnemyDobrovat*>(Entities[i]);
+			d->Update(Entities,TF);
+		}
+			break;
 		}
 	}
-	if (CurrentEnemies == 0 && spamfilter == false) {
-		spamfilter = true;
-		std::cout << "Room Clear" << std::endl;
+	if (CurrentEnemies == 0) {
+		map->getCurrentRoom()->setcleared(true);
 	}
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	map->DrawMap(renderer);
+	map->getCurrentRoom()->DrawMap(renderer);
+	//room->DrawMap(renderer);
 
 	for (int i = 0; i < Entities.size(); i++)
 		Entities[i]->Render();
-
+	Player* p = reinterpret_cast<Player*>(Entities[0]);
+	
+	hud->render(p->getHP());
 
 	SDL_RenderPresent(renderer);
 }
