@@ -1,7 +1,0 @@
-Room1
-2
-assets/Cable.png 1 700 500 20
-assets/Cable.png 1 100 444 20
-Room2
-1
-assets/Ionut.png 1 600 100 50
