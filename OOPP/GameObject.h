@@ -16,6 +16,7 @@ class GameObject
 		void setVelX(float velx);
 		void setVelY(float vely);
 		void setHP(int HP);
+		
 
 		float getX();
 		float getY();
@@ -23,6 +24,7 @@ class GameObject
 		float getVelX();
 		float getVelY();
 		int getHP();
+		int getKillScore();
 		const float Clamp(float value, float min, float max);
 
 
@@ -34,6 +36,7 @@ class GameObject
 
 
 
+
 		//bool intersects (SDL_Rect a, SDL_Rect b)=0;
 	
 	protected:
@@ -42,6 +45,7 @@ class GameObject
 		ID id;
 		float velx=0, vely=0;
 		int HP;
+		int killScore=0;
 
 	//private:
 

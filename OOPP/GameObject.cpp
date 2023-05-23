@@ -73,6 +73,11 @@ int GameObject::getHP() {
 	return HP;
 }
 
+int GameObject::getKillScore()
+{
+	return killScore;
+}
+
 
 const float GameObject::Clamp(float value, float min, float max) {
 	if (value >= max)

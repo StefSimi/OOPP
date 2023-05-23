@@ -10,6 +10,7 @@ EnemyChaser::EnemyChaser(SDL_Texture* texturesheet, ID id, float x, float y, flo
 
 	}
 
+	killScore = 100;
 }
 
 SDL_Rect EnemyChaser::getBounds() {

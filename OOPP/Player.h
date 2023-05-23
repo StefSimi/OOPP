@@ -42,8 +42,8 @@ private:
 	int bulletDelay = 20;
 	int bulletDamage = 5;
 	int bulletRange = 50;
-
-
+	int frame = 0;
+	
 
 
 	int currentbulletDelay = 0;

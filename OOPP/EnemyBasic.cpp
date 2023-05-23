@@ -2,7 +2,7 @@
 
 EnemyBasic::EnemyBasic(SDL_Texture* texturesheet,ID id, float x, float y, float velx, float vely,int HP, SDL_Renderer* rend) : GameObject(texturesheet,id, x, y, velx, vely,HP,rend) {
 	this->HP = HP;
-
+	killScore = 50;
 }
 
 SDL_Rect EnemyBasic::getBounds() {

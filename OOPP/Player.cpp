@@ -53,6 +53,12 @@ bool Player::getRico()
 
 void Player::Update(TextureFactory* TF,std::vector<GameObject*>&Entities, bool &running,Map *map) {
 	try {
+		frame++;
+		if (frame == 60) {
+			Game::score--;
+			std::cout << Game::score<<std::endl;
+			frame = 0;
+		}
 
 
 	

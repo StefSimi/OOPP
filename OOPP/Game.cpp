@@ -39,9 +39,12 @@ Map* map;
  SDL_Renderer* Game::getRenderer(){
 	return renderer;
 }
+
  TextureFactory* TF;
 
  Game* Game::instance = nullptr;
+ int Game::score = 100;
+
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
 	//handler = new Handler();
@@ -119,6 +122,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
+	//std::cout << score;
 	CurrentEnemies = 0;
 	//For Debugging
 

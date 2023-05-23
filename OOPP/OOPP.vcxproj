@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Stefan\Desktop\OOPP\SDL2_image-2.0.1\include;C:\Users\Stefan\Desktop\OOPPSDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Stefan\Desktop\OOPP\SDL2_image-2.0.1\lib\x86;C:\Users\Stefan\Desktop\OOPP\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2_image-2.0.1\include;C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2_image-2.0.1\lib\x86;C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,12 +90,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Stefan\Desktop\OOPP\SDL2_image-2.0.1\include;C:\Users\Stefan\Desktop\OOPP\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\json-develop\include;C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2_image-2.0.1\include;C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPPSDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Stefan\Desktop\OOPP\SDL2_image-2.0.1\lib\x86;C:\Users\Stefan\Desktop\OOPP\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2_image-2.0.1\lib\x86;C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -155,8 +155,10 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="IDGenerator.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="JsonObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PlayerScore.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="EnemyBasic.cpp" />
@@ -176,7 +178,9 @@
     <ClInclude Include="ID.h" />
     <ClInclude Include="IDGenerator.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="JsonObject.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="PlayerScore.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="EnemyBasic.h" />

@@ -44,7 +44,8 @@ void Bullet::Update(std::vector<GameObject*>& Entities,TextureFactory* TF, int &
 						if (rand() % 4 == 2) {
 							Entities.push_back(new Item(TF->getTexture("assets/Heart.png"), PassiveItem, Entities[i]->getX(),Entities[i]->getY(), renderer, 2));
 						}
-						std::cout << "Killed Enemy " << i << std::endl;
+						//std::cout << "Killed Enemy " << i << std::endl;
+						Game::score += Entities[i]->getKillScore();
 						Entities.erase(Entities.begin() + i);
 						Entities.shrink_to_fit();
 						
@@ -53,7 +54,7 @@ void Bullet::Update(std::vector<GameObject*>& Entities,TextureFactory* TF, int &
 						break;
 					}
 					else {
-						std::cout << "Hit Enemy " << i << std::endl;
+						//std::cout << "Hit Enemy " << i << std::endl;
 						Entities[i]->OnHit(); //For sound effects and particles
 						HP = 1;
 					}

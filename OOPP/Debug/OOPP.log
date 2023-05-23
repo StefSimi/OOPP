@@ -1,2 +1,5 @@
-﻿  Map.cpp
-  OOPP.vcxproj -> C:\Users\Stefan\Desktop\OOPP\Debug\OOPP.exe
+﻿  Bullet.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Bullet.cpp(14,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Bullet.cpp(15,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Bullet.cpp(37,21): warning C4018: '<': signed/unsigned mismatch
+  OOPP.vcxproj -> C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\Debug\OOPP.exe

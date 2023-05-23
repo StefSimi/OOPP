@@ -17,7 +17,7 @@ protected:
 
 public:
 	static Game *getInstance(const char* title, int width, int height, bool fullscreen);
-
+	static int score;
 	void operator=(const Game&) = delete;
 	Game(Game& game) = delete;
 

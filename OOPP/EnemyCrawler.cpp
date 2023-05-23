@@ -4,6 +4,7 @@ EnemyCrawler::EnemyCrawler(SDL_Texture* texturesheet, ID id, float x, float y, i
 	this->HP = HP;
 	active = false;
 	frameCounter = rand() % 20;
+	killScore = 25;
 }
 
 SDL_Rect EnemyCrawler::getBounds() {

@@ -12,7 +12,7 @@ EnemyDobrovat::EnemyDobrovat(SDL_Texture* texturesheet, ID id, float x, float y,
 
 	}
 	setFloor();
-	
+	killScore = 500;
 	/*
 	18 23
 	1->8

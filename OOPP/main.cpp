@@ -1,11 +1,22 @@
 #include "Game.h"
 #include <time.h>
 #include <fstream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <nlohmann/json.hpp>
+#include "JsonObject.h"
+
+
+using json = nlohmann::json;
+
+
 #define WIDTH 800
 #define HEIGHT 640
 
 Game* game = nullptr;
-
+int publicscore = 0;
+JsonObject jo;
 int main(int argc, char* argv[])
 {
 	srand(time(NULL));
@@ -14,12 +25,15 @@ int main(int argc, char* argv[])
 
 	Uint32 frameStart;
 	int frameTime;
+    std::string playerName;
+    std::cout << "Enter player name:\n";
+    std::cin >> playerName;
 
 
 	//game = new Game("Window", WIDTH, HEIGHT, false);
 	game = Game::getInstance("Window", WIDTH, HEIGHT, false);
 	//game->init("GameWindow", 800, 600, false);
-
+    //game->score = 0;
 	while (game->running())
 	{
 		frameStart = SDL_GetTicks();
@@ -35,6 +49,14 @@ int main(int argc, char* argv[])
 	}
 
 	//game->clean();
+    std::cout << Game::score<<"\n";
+    jo.updateTop5Scores(playerName, Game::score);
+    jo.updatePlayerHighestScore(playerName,Game::score);
 	delete game;
+
+
+
+
+
 	return 0;
 }
