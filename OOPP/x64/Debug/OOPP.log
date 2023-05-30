@@ -1,0 +1,88 @@
+﻿  Bullet.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Bullet.cpp(14,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Bullet.cpp(15,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  EnemyChaser.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyChaser.cpp(48,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyChaser.cpp(49,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  EnemyCrawler.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(57,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(58,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(66,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EnemyDobrovat.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(75,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(76,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(83,160): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(83,127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(104,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(105,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  EnemyShooter.cpp
+  Game.cpp
+  GameObject.cpp
+  Handler.cpp
+  HUD.cpp
+  IDGenerator.cpp
+  Item.cpp
+  JsonObject.cpp
+  main.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\main.cpp(22,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Map.cpp
+  PlayerScore.cpp
+  Room.cpp
+  Player.cpp
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(66,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(67,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(96,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(96,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(97,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(97,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(172,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(175,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(178,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(181,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(190,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(191,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(194,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(195,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(198,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(199,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(202,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(203,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\OOPP\Player.cpp(266,13): warning C4101: 'pos': unreferenced local variable
+  EnemyBasic.cpp
+  TextureFactory.cpp
+  TextureManager.cpp
+  Generating Code...
+TextureManager.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+HUD.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+Item.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+Player.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+EnemyBasic.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+Bullet.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+EnemyChaser.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+EnemyCrawler.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+EnemyDobrovat.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+EnemyCrawler.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "public: __cdecl EnemyCrawler::~EnemyCrawler(void)" (??1EnemyCrawler@@QEAA@XZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "protected: __cdecl Game::Game(char const *,int,int,bool)" (??0Game@@IEAA@PEBDHH_N@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "public: __cdecl Game::~Game(void)" (??1Game@@QEAA@XZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: void __cdecl Game::handleEvents(void)" (?handleEvents@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "protected: __cdecl Game::Game(char const *,int,int,bool)" (??0Game@@IEAA@PEBDHH_N@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "protected: __cdecl Game::Game(char const *,int,int,bool)" (??0Game@@IEAA@PEBDHH_N@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl Game::render(void)" (?render@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "public: void __cdecl Game::render(void)" (?render@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_DestroyRenderer referenced in function "public: __cdecl Game::~Game(void)" (??1Game@@QEAA@XZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "protected: __cdecl Game::Game(char const *,int,int,bool)" (??0Game@@IEAA@PEBDHH_N@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "public: __cdecl Game::~Game(void)" (??1Game@@QEAA@XZ)
+main.obj : error LNK2019: unresolved external symbol SDL_GetTicks referenced in function SDL_main
+main.obj : error LNK2019: unresolved external symbol SDL_Delay referenced in function SDL_main
+TextureFactory.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: struct SDL_Texture * __cdecl TextureFactory::getTexture(char const *)" (?getTexture@TextureFactory@@QEAAPEAUSDL_Texture@@PEBD@Z)
+TextureManager.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
+TextureFactory.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: struct SDL_Texture * __cdecl TextureFactory::getTexture(char const *)" (?getTexture@TextureFactory@@QEAAPEAUSDL_Texture@@PEBD@Z)
+TextureManager.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
+TextureFactory.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: struct SDL_Texture * __cdecl TextureFactory::getTexture(char const *)" (?getTexture@TextureFactory@@QEAAPEAUSDL_Texture@@PEBD@Z)
+TextureManager.obj : error LNK2001: unresolved external symbol IMG_Load
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2\lib\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2\lib\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\SDL2_image-2.0.1\lib\x86\\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\x64\Debug\OOPP.exe : fatal error LNK1120: 18 unresolved externals
