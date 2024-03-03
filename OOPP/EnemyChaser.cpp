@@ -50,16 +50,16 @@ void EnemyChaser::Update() {
 
 }
 void EnemyChaser::Render() {
-	srcRect.h = 64;
-	srcRect.w = 64;
+	
+	srcRect.h = 128;
+	srcRect.w = 128;
 	srcRect.x = 0;
-	srcRect.y = 0;//32 for ionut
+	srcRect.y = 0;
 
 	destRect.x = (int)xpos;
 	destRect.y = (int)ypos;
-	destRect.w = srcRect.w ;
-	destRect.h = srcRect.h ;
-
+	destRect.w = srcRect.w / 2;
+	destRect.h = srcRect.h / 2;
 	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
 }
 void EnemyChaser::OnHit() {

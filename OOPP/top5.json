@@ -1,24 +1,24 @@
 {
     "top_scores": [
         {
-            "player_name": "Stef",
-            "score": 271
+            "player_name": "p1",
+            "score": 200
         },
         {
-            "player_name": "Stef",
-            "score": 195
-        },
-        {
-            "player_name": "p2",
+            "player_name": "p1",
             "score": 150
         },
         {
-            "player_name": "Stef",
-            "score": 119
+            "player_name": "p2",
+            "score": 100
         },
         {
-            "player_name": "Stef",
-            "score": 117
+            "player_name": "p1",
+            "score": 95
+        },
+        {
+            "player_name": "p2",
+            "score": 50
         }
     ]
 }

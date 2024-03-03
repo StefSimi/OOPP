@@ -1,1 +1,59 @@
-﻿  OOPP.vcxproj -> C:\Users\simst\OneDrive\Desktop\Programming\OOPP\OOPP\Debug\OOPP.exe
+﻿  Bullet.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Bullet.cpp(14,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Bullet.cpp(15,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Bullet.cpp(37,21): warning C4018: '<': signed/unsigned mismatch
+  EnemyBasic.cpp
+  EnemyChaser.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyChaser.cpp(5,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyChaser.cpp(48,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyChaser.cpp(49,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  EnemyCrawler.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(57,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(58,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyCrawler.cpp(66,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EnemyDobrovat.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(7,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(75,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(76,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(83,160): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(83,127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(104,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\EnemyDobrovat.cpp(105,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Game.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Game.cpp(131,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Game.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+  GameObject.cpp
+  Handler.cpp
+  Item.cpp
+  JsonObject.cpp
+  Map.cpp
+  Player.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(38,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(66,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(67,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(96,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(96,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(97,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(97,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(172,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(175,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(178,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(181,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(190,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(191,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(194,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(195,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(198,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(199,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(202,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(203,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(227,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\Player.cpp(266,13): warning C4101: 'pos': unreferenced local variable
+  Room.cpp
+  TextureFactory.cpp
+  TextureManager.cpp
+  main.cpp
+C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\OOPP\main.cpp(22,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  OOPP.vcxproj -> C:\Users\simst\OneDrive\Desktop\Prog\Programming\OOPP\OOPP\Debug\OOPP.exe

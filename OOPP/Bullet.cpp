@@ -28,7 +28,7 @@ void Bullet::Update(std::vector<GameObject*>& Entities,TextureFactory* TF, int &
 			if (ypos + srcRect.h > HEIGHT-32 || ypos < 32)
 				vely *= -1;
 		}
-		//Todo texturi usi texturi cleanup
+		
 		
 		xpos += velx;
 		ypos += vely;
@@ -78,7 +78,7 @@ void Bullet::Update(std::vector<GameObject*>& Entities,TextureFactory* TF, int &
 		if (del) {
 			Entities.erase(Entities.begin() + index);
 			index--;
-			//E.shrink_to_fit();//Maybe?
+			
 			delete this;
 		}
 

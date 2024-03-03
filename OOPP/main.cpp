@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 
 
 	//game = new Game("Window", WIDTH, HEIGHT, false);
-	game = Game::getInstance("Window", WIDTH, HEIGHT, false);
+	game = Game::getInstance("OOPP", WIDTH, HEIGHT, false);
 	//game->init("GameWindow", 800, 600, false);
     //game->score = 0;
 	while (game->running())

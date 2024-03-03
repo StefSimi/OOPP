@@ -127,7 +127,7 @@ void Map::enterRoom(Room* r, SDL_Renderer* rend, TextureFactory* TF, std::vector
 			Entities.push_back(new EnemyDobrovat(TF->getTexture("assets/Dobrovat3.png"), Boss, 360, 0, 0, 0, 400, rend, Entities, CurrentRoom));
 		}
 		else if (CurrentRoom == r6) {
-			Entities.push_back(new EnemyChaser(TF->getTexture("assets/Diana.png"), Enemy, 700, 256, 0, 0, 75, rend, Entities));
+			Entities.push_back(new EnemyChaser(TF->getTexture("assets/VGA.png"), Enemy, 700, 256, 0, 0, 75, rend, Entities));
 			Entities.push_back(new EnemyBasic(TF->getTexture("assets/PC.png"), Enemy, 64, 64, 5, 5, 50, rend));
 			Entities.push_back(new EnemyBasic(TF->getTexture("assets/Router.png"), Enemy, 64, 512, 5, -5, 50, rend));
 			

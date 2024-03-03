@@ -27,7 +27,7 @@ public:
 
 	void handleEvents();
 	void update();
-	bool running() { return isRunning; } //inline foarte fancy;
+	bool running() { return isRunning; } 
 	void render();
 	void clean();
 

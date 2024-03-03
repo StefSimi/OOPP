@@ -47,7 +47,7 @@ void JsonObject::updateTop5Scores(const std::string& playerName, int newScore)
 
     std::ofstream outFile("top5.json");
     if (outFile.is_open()) {
-        outFile << jsonData.dump(4);  // Write the updated JSON data to the file
+        outFile << jsonData.dump(4);  
         outFile.close();
         std::cout << "Updated top 5 scores saved." << std::endl;
     }
@@ -59,7 +59,7 @@ int JsonObject::readPlayerHighestScore(const std::string& playerName)
 {
     std::ifstream file("scores.json");
     if (!file.is_open()) {
-        return 0;  // Return 0 if the file doesn't exist
+        return 0;  
     }
 
     json jsonData;
@@ -70,7 +70,7 @@ int JsonObject::readPlayerHighestScore(const std::string& playerName)
         return jsonData[playerName].get<int>();
     }
     else {
-        return 0;  // Return 0 if the player doesn't have a stored score
+        return 0;  
     }
 }
 
@@ -78,7 +78,7 @@ std::vector<PlayerScore> JsonObject::readTop5Scores()
 {
     std::ifstream file("top5.json");
     if (!file.is_open()) {
-        return std::vector<PlayerScore>();  // Return an empty vector if the file doesn't exist
+        return std::vector<PlayerScore>(); 
     }
 
     json jsonData;
